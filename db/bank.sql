@@ -16,6 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `customer`
+--
+
+DROP TABLE IF EXISTS `customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer` (
+  `cardnumber` varchar(16) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `balance` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`cardnumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer`
+--
+
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `transaction`
 --
 
@@ -23,12 +47,16 @@ DROP TABLE IF EXISTS `transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction` (
-  `idtransaction` int(11) NOT NULL,
-  `sender_cardnumber` varchar(16) NOT NULL,
-  `recipient_cardnumber` varchar(16) NOT NULL,
+  `idtransaction` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(16) NOT NULL,
+  `recipient` varchar(16) NOT NULL,
   `amount` decimal(10,0) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idtransaction`)
+  PRIMARY KEY (`idtransaction`),
+  KEY `sendernumber_idx` (`sender`),
+  KEY `recipientnumber_idx` (`recipient`),
+  CONSTRAINT `sendernumber` FOREIGN KEY (`sender`) REFERENCES `customer` (`cardnumber`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `recipientnumber` FOREIGN KEY (`recipient`) REFERENCES `customer` (`cardnumber`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -50,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-12 21:32:59
+-- Dump completed on 2018-11-12 21:44:53
