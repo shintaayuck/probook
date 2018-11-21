@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/login-register.css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/bebas" type="text/css"/>
+</head>
+<body>
+<?php include "view/Message.phtml"?>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            REGISTER
+        </div>
+        <form class="form-container" action="/register" method="post">
+            <div class="input-container">
+                <div class="label"><label for="name">Name</label></div>
+                <div class="input"><input type="text" name="name" id="name" placeholder="Tayo Little Bus"></div>
+            </div>
+            <div class="input-container">
+                <div class="label"><label for="username">Username</label></div>
+                <div class="input">
+                    <input onchange="checkUsername()" type="text" name="username" id="username" placeholder="Tayo" class="check">
+                    <img class="check-mark" src="/static/check.png">
+                </div>
+            </div>
+            <div class="input-container">
+                <div class="label"><label for="email">Email</label></div>
+                <div class="input">
+                    <input onchange="checkEmail()" class="check" type="email" name="email" id="email" placeholder="Email">
+                    <img class="check-mark" src="/static/check.png">
+                </div>
+            </div>
+            <div class="input-container">
+                <div class="label"><label for="password">Password</label></div>
+                <div class="input"><input type="password" name="password" id="password" placeholder="Password"></div>
+            </div>
+            <div class="input-container">
+                <div class="label"><label for="confirm">Confirm Password</label></div>
+                <div class="input"><input type="password" name="confirm" id="confirm" placeholder="Confirm Password"></div>
+            </div>
+            <div class="input-container">
+                <div class="label"><label for="address">Address</label></div>
+                <div class="input"><textarea name="address" id="address" rows="4" placeholder="Jl. Sesuatu di sesuatu no segitu"></textarea></div>
+            </div>
+            <div class="input-container">
+                <div class="label"><label for="phone">Phone Number</label></div>
+                <div class="input"><input type="text" name="phone" id="phone" placeholder="0838111111111"></div>
+            </div>
+            <div class="notice">
+                <a href="/login"><u>Already have an account?</u></a>
+            </div>
+            <div class="input-container">
+                <input disabled type="submit" id="submit" class="button-primary" value="REGISTER">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script src="/static/register.js"></script>
+</html>
