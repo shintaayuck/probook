@@ -33,9 +33,11 @@ app.get("/api/validate", function(req,res) {
         con.query(sql, card_no, function(err, result) {
             // if (err) throw err;
             if (result[0]) {
-                res.sendStatus(200); //OK
+                message = card_no + ' is found';
+                res.status(200).send({"message" : message}); //OK
             } else {
-                res.status(404).send(card_no + " not found"); //Not Found
+                message = card_no + ' is not found';
+                res.status(404).send({"message": message}); //Not Found
             }
         })
     } else {
