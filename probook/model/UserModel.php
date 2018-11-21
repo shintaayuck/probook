@@ -17,6 +17,7 @@ class UserModel extends BaseModel {
     protected $phone;
     protected $avatar;
     protected $address;
+    protected $cardnum;
 
     public function __construct()
     {
@@ -31,6 +32,14 @@ class UserModel extends BaseModel {
         $stmt->bindParam(":phone", $this->phone);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return !empty($result);
+    }
+
+    public function checkCardNumExists()
+    {
+        $link = "localhost:3000/api/validate?card_no=".$this->cardnum;
+        $data = file_get_contents($link);
+        $result = json_decode($data);
         return !empty($result);
     }
 
@@ -158,5 +167,21 @@ class UserModel extends BaseModel {
     public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
+    }
+
+     /**
+     * @return mixed
+     */
+    public function getCardNum()
+    {
+        return $this->cardnum;
+    }
+
+    /**
+     * @param mixed $cardnum
+     */
+    public function setCardNum($cardnum)
+    {
+        $this->cardnum = $cardnum;
     }
 }
