@@ -50,6 +50,19 @@ class RegisterController extends BaseController
         echo "ok";
     }
 
+    public function checkCardNum()
+    {
+        $user = new UserModel();
+        $cardnum = $this->request->get("cardnum");
+        $user->setCardNum($cardnum);
+        if ($user->checkCardNumExists()){
+            echo "error";
+            return;
+        }
+
+        echo "ok";
+    }
+
     public function register()
     {
         if (!$this->request->validatePostNotEmpty()) {
@@ -66,6 +79,7 @@ class RegisterController extends BaseController
         $confirm = $this->request->post("confirm");
         $address = $this->request->post("address");
         $phone = $this->request->post("phone");
+        $cardnum = $this->request->post("cardnum");
 
         if ($password != $confirm) {
             View::render("Register", [
@@ -90,6 +104,15 @@ class RegisterController extends BaseController
         $user->setAddress($address);
         $user->setPhone($phone);
         $user->setAvatar("default.jpg");
+        $user->setCardNum($cardnum);
+        
+        if (!$user->checkCardNum()){
+            View::render("Register", [
+                "error" => "Card Number isn't exists"
+            ]);
+            return;
+        }
+        
         $user->insert();
 
         $session = new Session();
@@ -97,6 +120,4 @@ class RegisterController extends BaseController
 
         View::redirect("/search");
     }
-
-
 }
