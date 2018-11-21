@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/header.css">
+    <link rel="stylesheet" type="text/css" href="/static/search.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito:600" />
+
+    <script type="text/javascript" src="/static/search.js"></script>
+</head>
+
+<body>
+    <?php require "view/header.phtml"; ?>
+    <section>
+        <form id="book-search" action="/search/">
+            <h1>Search Book</h1>
+            <div>
+                <input class="book-search-field" name="query" type="text" placeholder="Input search terms" >
+            </div>
+            <div>
+                <button class="book-search-field" id="book-search-submit" onclick="search()" type="button">Search</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>
