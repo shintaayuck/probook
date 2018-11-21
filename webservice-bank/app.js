@@ -25,11 +25,22 @@ con.connect((err) => {
 app.listen(3000, () => {
 });
 
-//getter
-app.get("/", function(req,res) {
-    //create json
-    json = {"nama": "shinta", "umur" : 19};
-    res.send(json);
+
+app.get("/api/validate", function(req,res) {
+    card_no = req.query.card_no;
+    if (card_no) {
+        var sql = 'select * from customer where cardnumber = ?';
+        con.query(sql, card_no, function(err, result) {
+            // if (err) throw err;
+            if (result[0]) {
+                res.sendStatus(200); //OK
+            } else {
+                res.status(404).send(card_no + " not found"); //Not Found
+            }
+        })
+    } else {
+        res.sendStatus(400);
+    }
 
 });
 
