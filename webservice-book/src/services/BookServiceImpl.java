@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-@WebService(endpointInterface = "services.BookService")
+@WebService()
 public class BookServiceImpl implements BookService {
     private static Map<String, Book> books = new HashMap<String, Book>();
     
