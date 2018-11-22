@@ -6,7 +6,6 @@
  * Date: 22/10/18
  * Time: 6:23 PM
  */
-
 require "controller/BaseController.php";
 require "core/View.php";
 require_once "core/Session.php";
@@ -43,19 +42,6 @@ class RegisterController extends BaseController
         $email = $this->request->get("email");
         $user->setEmail($email);
         if ($user->checkUserExists()) {
-            echo "error";
-            return;
-        }
-
-        echo "ok";
-    }
-
-    public function checkCardNum()
-    {
-        $user = new UserModel();
-        $cardnum = $this->request->get("cardnum");
-        $user->setCardNum($cardnum);
-        if ($user->checkCardNumExists()){
             echo "error";
             return;
         }
@@ -105,13 +91,6 @@ class RegisterController extends BaseController
         $user->setPhone($phone);
         $user->setAvatar("default.jpg");
         $user->setCardNum($cardnum);
-        
-        if (!$user->checkCardNum()){
-            View::render("Register", [
-                "error" => "Card Number isn't exists"
-            ]);
-            return;
-        }
         
         $user->insert();
 

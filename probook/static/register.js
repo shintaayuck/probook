@@ -17,7 +17,6 @@ async function checkUsername() {
         return;
     }
 
-
     let result = await fetch("/check-user/" + username);
     let textResult = await result.text();
 
@@ -55,6 +54,32 @@ async function checkEmail() {
         check.style.display = "inline-flex";
     } else {
         invalidBorderColor(emailField);
+        check.style.display = "none";
+    }
+    updateButton();
+}
+
+async function checkCardNum() {
+    let cardnumField = document.getElementById("cardnum");
+    let check = cardnumField.nextElementSibling;
+    let cardnum = cardnumField.value;
+
+    if (cardnum.length <= 0 || cardnum.length > 16) {
+        invalidBorderColor(cardnumField);
+        check.style.display = "none";
+        return;
+    }
+
+    let result = await fetch("http://localhost:3000/api/validate?card_no=" + cardnum);
+    let textResult = await result.text();
+
+    console.log(textResult);
+
+    if (textResult === "ok") {
+        validBorderColor(cardnumField);
+        check.style.display = "inline-flex";
+    } else {
+        invalidBorderColor(cardnumField);
         check.style.display = "none";
     }
     updateButton();

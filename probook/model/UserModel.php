@@ -35,14 +35,6 @@ class UserModel extends BaseModel {
         return !empty($result);
     }
 
-    public function checkCardNumExists()
-    {
-        $link = "localhost:3000/api/validate?card_no=".$this->cardnum;
-        $data = file_get_contents($link);
-        $result = json_decode($data);
-        return !empty($result);
-    }
-
     public function loadFromUserPass() {
         $stmt = $this->conn->prepare("select * from $this->tableName where username = :username and password = :password");
         $stmt->bindParam(":username", $this->username);
