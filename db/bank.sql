@@ -36,6 +36,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES ('1111222233334444','Deborah',6000000),('5555666677778888','Shinta',16500000);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,9 +56,9 @@ CREATE TABLE `transaction` (
   PRIMARY KEY (`idtransaction`),
   KEY `sendernumber_idx` (`sender`),
   KEY `recipientnumber_idx` (`recipient`),
-  CONSTRAINT `sendernumber` FOREIGN KEY (`sender`) REFERENCES `customer` (`cardnumber`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `recipientnumber` FOREIGN KEY (`recipient`) REFERENCES `customer` (`cardnumber`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `recipientnumber` FOREIGN KEY (`recipient`) REFERENCES `customer` (`cardnumber`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `sendernumber` FOREIGN KEY (`sender`) REFERENCES `customer` (`cardnumber`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +67,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+INSERT INTO `transaction` VALUES (1,'1111222233334444','5555666677778888',1000000,'2018-11-21 15:27:43');
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -78,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-12 21:44:53
+-- Dump completed on 2018-11-21 22:30:11
