@@ -9,7 +9,16 @@ public class Book implements Serializable {
     private String title;
     private String[] authors;
     private String description;
-    private Long bookPrice;
+    private Integer bookPrice;
+    
+    public Book() {}
+    public Book(String bookID, String title, String[] authors, String description, Integer bookPrice) {
+        this.bookID = bookID;
+        this.title = title;
+        this.authors = authors;
+        this.description = description;
+        this.bookPrice = bookPrice;
+    }
     
     public String getBookID() {
         return bookID;
@@ -43,11 +52,11 @@ public class Book implements Serializable {
         this.description = description;
     }
     
-    public Long getBookPrice() {
+    public Integer getBookPrice() {
         return bookPrice;
     }
     
-    public void setBookPrice(Long bookPrice) {
+    public void setBookPrice(Integer bookPrice) {
         this.bookPrice = bookPrice;
     }
     

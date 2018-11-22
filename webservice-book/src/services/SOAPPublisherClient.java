@@ -24,7 +24,7 @@ public class SOAPPublisherClient {
         String[] a1 = {"Author pertama"};
         b1.setAuthors(a1);
         b1.setDescription("Ini buku pertama lho");
-        b1.setBookPrice(10000L);
+        b1.setBookPrice(10000);
     
         Book b2 = new Book();
         b2.setBookID("2");
@@ -32,15 +32,13 @@ public class SOAPPublisherClient {
         String[] a2 = {"Author kedua"};
         b2.setAuthors(a2);
         b2.setDescription("Ini buku kedua lho");
-        b2.setBookPrice(20000L);
+        b2.setBookPrice(20000);
         
         
         System.out.println("Add book status="+bs.addBook(b1));
         System.out.println("Add book status="+bs.addBook(b2));
         
         System.out.println(bs.getBook("1"));
-        
-        System.out.println(Arrays.asList(bs.getBookByQuery("Buku")));
     }
 }
 

@@ -16,5 +16,5 @@ public interface BookService {
     public Book getBook(String bookID);
     
     @WebMethod
-    public Book[] getBookByQuery(String query);
+    public Book[] searchBook(String query);
 }
