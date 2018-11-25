@@ -63,6 +63,7 @@ async function checkCardNum() {
     let cardnumField = document.getElementById("cardnum");
     let check = cardnumField.nextElementSibling;
     let cardnum = cardnumField.value;
+    let regex = /is found/g;
 
     if (cardnum.length <= 0 || cardnum.length > 16) {
         invalidBorderColor(cardnumField);
@@ -73,12 +74,12 @@ async function checkCardNum() {
     let result = await fetch("http://localhost:3000/api/validate?card_no=" + cardnum);
     let textResult = await result.text();
 
-    console.log(textResult);
-
-    if (textResult === "ok") {
+    if (regex.test(textResult)) {
+        console.log("ok");
         validBorderColor(cardnumField);
         check.style.display = "inline-flex";
     } else {
+        console.log("invalid");
         invalidBorderColor(cardnumField);
         check.style.display = "none";
     }
