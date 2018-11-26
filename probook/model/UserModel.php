@@ -17,7 +17,7 @@ class UserModel extends BaseModel {
     protected $phone;
     protected $avatar;
     protected $address;
-    protected $cardnum;
+    protected $cardnumber;
 
     public function __construct()
     {
@@ -164,16 +164,16 @@ class UserModel extends BaseModel {
      /**
      * @return mixed
      */
-    public function getCardNum()
+    public function getCardnumber()
     {
-        return $this->cardnum;
+        return $this->cardnumber;
     }
 
     /**
-     * @param mixed $cardnum
+     * @param mixed $cardnumber
      */
-    public function setCardNum($cardnum)
+    public function setCardnumber($cardnumber)
     {
-        $this->cardnum = $cardnum;
+        $this->cardnumber = $cardnumber;
     }
 }

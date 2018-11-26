@@ -59,8 +59,8 @@ async function checkEmail() {
     updateButton();
 }
 
-async function checkCardNum() {
-    let cardnumField = document.getElementById("cardnum");
+async function checkCardNumber() {
+    let cardnumField = document.getElementById("cardnumber");
     let check = cardnumField.nextElementSibling;
     let cardnum = cardnumField.value;
     let regex = /is found/g;
@@ -91,9 +91,11 @@ function updateButton() {
     let checkEmail = emailField.nextElementSibling;
     let user = document.getElementById("username");
     let checkUser = user.nextElementSibling;
+    let cardnumField = document.getElementById("cardnumber");
+    let checkCardNumber = cardnumField.nextElementSibling;
     let submit = document.getElementById("submit");
 
-    if (checkUser.style.display !== "none" && checkEmail.style.display !== "none") {
+    if (checkUser.style.display !== "none" && checkEmail.style.display !== "none" && checkCardNumber.style.display !== "none" ) {
         submit.disabled = false;
     } else {
         submit.disabled = true;

@@ -65,7 +65,7 @@ class RegisterController extends BaseController
         $confirm = $this->request->post("confirm");
         $address = $this->request->post("address");
         $phone = $this->request->post("phone");
-        $cardnum = $this->request->post("cardnum");
+        $cardnumber = $this->request->post("cardnumber");
 
         if ($password != $confirm) {
             View::render("Register", [
@@ -90,8 +90,8 @@ class RegisterController extends BaseController
         $user->setAddress($address);
         $user->setPhone($phone);
         $user->setAvatar("default.jpg");
-        $user->setCardNum($cardnum);
-        
+        $user->setCardnumber($cardnumber);
+
         $user->insert();
 
         $session = new Session();
