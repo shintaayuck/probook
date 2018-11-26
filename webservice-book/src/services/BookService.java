@@ -9,12 +9,21 @@ import javax.jws.soap.SOAPBinding;
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface BookService {
-    @WebMethod
-    public boolean addBook(Book b);
     
+    /**
+     * Get Book based on bookID, fetch book from GoogleBooksAPI, check if exist in database.
+     * price will be -1 if price or id doesn't exist in database, indicating not for sale.
+     * @param bookID
+     * @return Book
+     */
     @WebMethod
     public Book getBook(String bookID);
     
+    /**
+     * Get array of book based on query, fetch the data from Google Books API. Save top 5 result to database.
+     * @param query
+     * @return Book[]
+     */
     @WebMethod
-    public Book[] getBookByQuery(String query);
+    public Book[] searchBook(String query);
 }
