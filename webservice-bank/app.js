@@ -28,6 +28,16 @@ app.listen(3000, () => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 app.get("/api/validate", function(req,res) {
     card_no = req.query.card_no;
@@ -56,25 +66,27 @@ app.post("/api/transfer", function(req,res) {
   if ((card_no_sender) && (card_no_receiver) && (amount)) {
     var sql = 'SELECT balance FROM customer WHERE cardnumber = ?';
     con.query(sql, card_no_sender, function(err, result){
-      if (err) throw err;
+      if (err) res.status(400).send({"message": "Bad request"});
       if (result[0].balance < amount) {
-        res.status(412).send({"message": "Not enough amount"});
+        res.status(400).send({"message": "Not enough amount"});
       }
       else {
         var sql = 'UPDATE customer SET balance = balance - ? WHERE cardnumber = ?';
-        con.query(sql, amount, card_no_sender, function(err, result){
-          if (err) throw err;
+        var val = [amount, card_no_sender];
+        con.query(sql, val, function(err, result){
+          if (err) res.status(500).send({"message": "Error updating sender balance"});
           console.log("1 record updated");
         })
         var sql = 'UPDATE customer SET balance = balance + ? WHERE cardnumber = ?';
-        con.query(sql, amount, card_no_receiver, function(err, result){
-          if (err) throw err;
+        var val = [amount, card_no_receiver];
+        con.query(sql, val, function(err, result){
+          if (err) res.status(500).send({"message": "Error updating receiver balance"});
           console.log("1 record updated");
         })
-        var sql = 'INSERT INTO transaction(sender,recipient,amount) VALUES ?';
+        var sql = 'INSERT INTO transaction(sender,recipient,amount) VALUES (?,?,?)';
         var val = [card_no_sender, card_no_receiver, amount];
         con.query(sql, val, function(err, result){
-          if (err) throw err;
+          if (err) res.status(500).send({"message": "Error inserting transaction to DB"});
           console.log("1 record inserted")
         })
         res.status(200).send({"message": "Transaction success"});
@@ -82,16 +94,5 @@ app.post("/api/transfer", function(req,res) {
     })
   }
 });
-
-// error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
 
 // module.exports = app;
