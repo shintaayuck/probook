@@ -29,7 +29,8 @@ class EditController extends BaseController
             "avatar" => $model->getAvatar(),
             "name" => $model->getName(),
             "address" => $model->getAddress(),
-            "phone" => $model->getPhone()
+            "phone" => $model->getPhone(),
+            "cardnumber" => $model->getCardnumber()
         ];
 
         View::render("edit", $vars);
@@ -40,6 +41,7 @@ class EditController extends BaseController
         $name = $this->request->post("name");
         $address = $this->request->post("address");
         $phone = $this->request->post("phone");
+        $cardnumber = $this->request->post("cardnumber");
         $avatar = $this->request->files["avatar"];
 
         $user = new UserModel();
@@ -52,8 +54,8 @@ class EditController extends BaseController
         $newUser->setUsername($user->getUsername());
         $newUser->setEmail($user->getEmail());
         $newUser->setPassword($user->getPassword());
-
-
+        $newUser->setCardnumber($user->getCardnumber());
+        
         if ($name != "") {
             $newUser->setName($name);
         } else {
@@ -80,11 +82,14 @@ class EditController extends BaseController
             $newUser->setAvatar($user->getAvatar());
         }
 
+        if ($cardnumber != "") {
+            $newUser->setCardnumber($cardnumber);
+        } else {
+            $newUser->setCardNumber($user->getCardnumber());
+        }
+        
         $newUser->save();
-
         View::redirect('/profile');
-
-
     }
 
 

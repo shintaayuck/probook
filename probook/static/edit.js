@@ -1,9 +1,11 @@
 function validateInput() {
-    var name = document.forms["editform"]["name"].value;
-    var address = document.forms["editform"]["address"].value;
-    var phone = document.forms["editform"]["phone"].value;
+    var name = document.getElementById("name").value;
+    var address = document.getElementById("address").value;
+    var phone = document.getElementById("phone").value;
+    var cardnumber = document.getElementById("cardnumber").value;
     let button = document.getElementById("submit");
-    if ((name == "") || (address == "") || (phone == "")) {
+
+    if ((name == "") || (address == "") || (phone == "") || (cardnumber == "")) {
         alert("form cannot be empty");
         button.disabled = true;
         return false;
@@ -18,8 +20,20 @@ function validateInput() {
         button.disabled = true;
         return false;
     }
+    
+    let result = await fetch("http://localhost:3000/api/validate?card_no=" + cardnumber);
+    let textResult = await result.text();
+    let regex = /is found/g;
+
+    if (!(regex.test(textResult))) {
+        alert("invalid card number");
+        button.disabled = true;
+        return false;
+    }
+    
     button.disabled = false;
-}
+    return true;
+} 
 
 function submitFile() {
     document.getElementById("hidden-button").click();
