@@ -10,6 +10,7 @@ public class Book implements Serializable {
     private String[] authors;
     private String description;
     private Integer bookPrice;
+    private String category;
     
     public Book() {}
     public Book(String bookID, String title, String[] authors, String description, Integer bookPrice) {
