@@ -1,9 +1,27 @@
-function validateInput() {
-    var name = document.forms["editform"]["name"].value;
-    var address = document.forms["editform"]["address"].value;
-    var phone = document.forms["editform"]["phone"].value;
+async function isValidCardnumber(){
+    var cardnumber = document.getElementById("cardnumber").value;
     let button = document.getElementById("submit");
-    if ((name == "") || (address == "") || (phone == "")) {
+    var result = await fetch("http://localhost:3000/api/validate?card_no=" + cardnumber);
+    var textResult = await result.text();
+    var regex = /is found/g;
+    if(!(regex.test(textResult))){
+        console.log("error");
+        alert("invalid card number");
+        button.disabled = true;
+        return false;
+    }
+    console.log("ok");
+    button.disabled = false;
+    return true;
+}
+
+function validateInput() {
+    var name = document.getElementById("name").value;
+    var address = document.getElementById("address").value;
+    var phone = document.getElementById("phone").value;
+    let button = document.getElementById("submit");
+
+    if ((name == "") || (address == "") || (phone == "") || (cardnumber == "")) {
         alert("form cannot be empty");
         button.disabled = true;
         return false;
@@ -19,7 +37,8 @@ function validateInput() {
         return false;
     }
     button.disabled = false;
-}
+    return true;
+} 
 
 function submitFile() {
     document.getElementById("hidden-button").click();
