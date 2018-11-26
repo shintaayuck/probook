@@ -17,7 +17,6 @@ async function checkUsername() {
         return;
     }
 
-
     let result = await fetch("/check-user/" + username);
     let textResult = await result.text();
 
@@ -60,14 +59,43 @@ async function checkEmail() {
     updateButton();
 }
 
+async function checkCardNumber() {
+    let cardnumField = document.getElementById("cardnumber");
+    let check = cardnumField.nextElementSibling;
+    let cardnum = cardnumField.value;
+    let regex = /is found/g;
+
+    if (cardnum.length <= 0 || cardnum.length > 16) {
+        invalidBorderColor(cardnumField);
+        check.style.display = "none";
+        return;
+    }
+
+    let result = await fetch("http://localhost:3000/api/validate?card_no=" + cardnum);
+    let textResult = await result.text();
+
+    if (regex.test(textResult)) {
+        console.log("ok");
+        validBorderColor(cardnumField);
+        check.style.display = "inline-flex";
+    } else {
+        console.log("invalid");
+        invalidBorderColor(cardnumField);
+        check.style.display = "none";
+    }
+    updateButton();
+}
+
 function updateButton() {
     let emailField = document.getElementById("email");
     let checkEmail = emailField.nextElementSibling;
     let user = document.getElementById("username");
     let checkUser = user.nextElementSibling;
+    let cardnumField = document.getElementById("cardnumber");
+    let checkCardNumber = cardnumField.nextElementSibling;
     let submit = document.getElementById("submit");
 
-    if (checkUser.style.display !== "none" && checkEmail.style.display !== "none") {
+    if (checkUser.style.display !== "none" && checkEmail.style.display !== "none" && checkCardNumber.style.display !== "none" ) {
         submit.disabled = false;
     } else {
         submit.disabled = true;

@@ -1,0 +1,15 @@
+{
+  "name": "tugasbesar2_2018",
+  "version": "1.0.0",
+  "description": "Melakukan *upgrade* Website toko buku online pada Tugas 1 dengan mengaplikasikan **arsitektur web service REST dan SOAP**.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.informatika.org/IF3110-2018-K02-arkavTalks/tugasbesar2_2018.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
