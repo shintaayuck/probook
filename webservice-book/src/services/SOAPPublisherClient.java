@@ -34,10 +34,6 @@ public class SOAPPublisherClient {
         b2.setDescription("Ini buku kedua lho");
         b2.setBookPrice(20000);
         
-        
-        System.out.println("Add book status="+bs.addBook(b1));
-        System.out.println("Add book status="+bs.addBook(b2));
-        
         System.out.println(bs.getBook("1"));
     }
 }

@@ -9,6 +9,7 @@ class SearchController extends BaseController
     public function __construct($request)
     {
         parent::__construct($request);
+
     }
 
     public function landing()
@@ -28,6 +29,10 @@ class SearchController extends BaseController
 
             View::render("result", $vars);
         }
+
+        // $client = new SoapClient('http://localhost:8000/api/books?wsdl', array('cache-wsdl' => WSDL_CACHE_NONE));
+        // var_dump($client->__getFunctions());
+        // var_dump($client->searchBook("INI QUERY"));
 
     }
 }
