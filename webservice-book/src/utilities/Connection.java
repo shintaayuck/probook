@@ -5,4 +5,6 @@ public class Connection {
     static String database = "jdbc:mysql://localhost:3306/book";
     static String user = "root";
     static String password = "";
+    
+    
 }

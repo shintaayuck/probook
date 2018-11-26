@@ -15,12 +15,6 @@ import java.util.Set;
 public class BookServiceImpl implements BookService {
     private static Map<String, Book> books = new HashMap<String, Book>();
     
-    @Override
-    public boolean addBook(Book b) {
-        if (books.get(b.getBookID()) != null) return false;
-        books.put(b.getBookID(), b);
-        return true;
-    }
     
     @Override
     public Book getBook(String id) {
