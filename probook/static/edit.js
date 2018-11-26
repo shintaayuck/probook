@@ -1,8 +1,24 @@
+async function isValidCardnumber(){
+    var cardnumber = document.getElementById("cardnumber").value;
+    let button = document.getElementById("submit");
+    var result = await fetch("http://localhost:3000/api/validate?card_no=" + cardnumber);
+    var textResult = await result.text();
+    var regex = /is found/g;
+    if(!(regex.test(textResult))){
+        console.log("error");
+        alert("invalid card number");
+        button.disabled = true;
+        return false;
+    }
+    console.log("ok");
+    button.disabled = false;
+    return true;
+}
+
 function validateInput() {
     var name = document.getElementById("name").value;
     var address = document.getElementById("address").value;
     var phone = document.getElementById("phone").value;
-    var cardnumber = document.getElementById("cardnumber").value;
     let button = document.getElementById("submit");
 
     if ((name == "") || (address == "") || (phone == "") || (cardnumber == "")) {
@@ -20,17 +36,6 @@ function validateInput() {
         button.disabled = true;
         return false;
     }
-    
-    let result = await fetch("http://localhost:3000/api/validate?card_no=" + cardnumber);
-    let textResult = await result.text();
-    let regex = /is found/g;
-
-    if (!(regex.test(textResult))) {
-        alert("invalid card number");
-        button.disabled = true;
-        return false;
-    }
-    
     button.disabled = false;
     return true;
 } 
