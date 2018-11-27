@@ -5,7 +5,6 @@
     <list default="true" id="9929f67d-6903-47a8-8aad-bd9dc2fe4a2d" name="Default Changelist" comment="" />
 =======
     <list default="true" id="9929f67d-6903-47a8-8aad-bd9dc2fe4a2d" name="Default Changelist" comment="">
-<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_2.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/httpclient_4_5_6.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/httpcore_4_4_10.xml" afterDir="false" />
@@ -22,10 +21,8 @@
       <change beforePath="$PROJECT_DIR$/src/services/SOAPPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/SOAPPublisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utilities/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/Transfer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webservice-book.iml" beforeDir="false" afterPath="$PROJECT_DIR$/webservice-book.iml" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/src/services/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/BookServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/RecommenderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/RecommenderServiceImpl.java" afterDir="false" />
->>>>>>> f770b31251ce7267f8ec6511f5e285dfe9c20745
     </list>
 >>>>>>> 93b961eddfc80cfb9ff787c4021226a07d3cea0c
     <ignored path="$PROJECT_DIR$/out/" />
