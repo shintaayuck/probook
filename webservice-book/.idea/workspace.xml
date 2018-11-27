@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9929f67d-6903-47a8-8aad-bd9dc2fe4a2d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/services/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/RecommenderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/RecommenderServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="9929f67d-6903-47a8-8aad-bd9dc2fe4a2d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +25,7 @@
     <session id="1646906209">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="4" />
@@ -119,8 +116,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/services/BookServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="1421">
+              <caret line="109" column="44" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1543286766652" expanded="true" signature="3360:4058" ph="..." />
@@ -395,7 +392,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543307391061" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543310130965" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -454,12 +451,12 @@
       <workItem from="1543043151243" duration="207000" />
       <workItem from="1543198737530" duration="3603000" />
       <workItem from="1543236855946" duration="10189000" />
-      <workItem from="1543285199267" duration="2062000" />
+      <workItem from="1543285199267" duration="2343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33551000" />
+    <option name="totallyTimeSpent" value="33832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -475,7 +472,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952926" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49713877" visible="true" weight="0.32771084" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49713877" weight="0.32771084" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.33734939" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -653,8 +650,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/BookServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        <state relative-caret-position="1421">
+          <caret line="109" column="44" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1543286766652" expanded="true" signature="3360:4058" ph="..." />
