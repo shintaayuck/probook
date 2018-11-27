@@ -30,9 +30,15 @@ class SearchController extends BaseController
             View::render("result", $vars);
         }
 
-        // $client = new SoapClient('http://localhost:8000/api/books?wsdl', array('cache-wsdl' => WSDL_CACHE_NONE));
-        // var_dump($client->__getFunctions());
-        // var_dump($client->searchBook("INI QUERY"));
+         $client = new SoapClient('http://localhost:5000/api/books?wsdl', array('cache-wsdl' => WSDL_CACHE_NONE));
+         $client->__getFunctions();
+         echo("HOLAA");
+         $resultinjson = $client->searchBook("SHINTA")->return[0];
+         var_dump($resultinjson);
+         $title = $resultinjson->title;
+//         var_dump($title);
+         echo("AUOOOOOOOOOOOOOOO");
+
 
     }
 }
