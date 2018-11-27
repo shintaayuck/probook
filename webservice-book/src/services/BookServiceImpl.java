@@ -78,6 +78,7 @@ public class BookServiceImpl implements BookService {
         GoogleBookAPI googleBookAPI = new GoogleBookAPI(query);
         JSONObject hasilJSON = googleBookAPI.searchBook();
         try {
+            System.out.println(hasilJSON.get("items").toString());
             JSONArray resultItems = new JSONArray(hasilJSON.get("items").toString());
             Book[] bookResults = new Book[resultItems.length()];
             
@@ -90,11 +91,11 @@ public class BookServiceImpl implements BookService {
                 }
             }
             return bookResults;
-        } catch (JSONException err) {
+        } catch (JSONException | NullPointerException err)  {
             System.out.println(err);
         }
-        
-        
+    
+    
         return null;
     }
     
@@ -107,18 +108,37 @@ public class BookServiceImpl implements BookService {
     protected Boolean insertBook(Book book) {
         
         try {
-            String query = "INSERT INTO book VALUES (?, ?, ?, ? );";
+            String queryInsertBook = "INSERT INTO books VALUES (?, ?, ? );";
             Connection con = getConnection();
 
-            PreparedStatement p = con.prepareStatement(query);
+            PreparedStatement p = con.prepareStatement(queryInsertBook);
             p.setString(1, book.getBookID());
-            
-            Array categories = con.createArrayOf("varchar", book.getCategories());
-            p.setArray(2, categories);
-            p.setInt(3, book.getBookPrice());
-            p.setInt(4,0);
-            
+            p.setInt(2, book.getBookPrice());
+            p.setInt(3,0);
             p.execute();
+            
+            String queryGetCategory = "SELECT COUNT(bookid) as length FROM book_category WHERE bookid = (?) AND category = (?);";
+            for (String category : book.getCategories()) {
+                p = con.prepareStatement(queryGetCategory);
+                p.setString(1,book.getBookID());
+                p.setString(2, category);
+                ResultSet resultSet = p.executeQuery();
+    
+                Integer categoryLength;
+                if(resultSet.next()){
+                    categoryLength = resultSet.getInt("length");
+                } else {
+                    categoryLength = 0;
+                }
+                
+                if (categoryLength == 0 ) {
+                    String queryInsertCategory = "INSERT INTO book_category VALUES (?,?);";
+                    p = con.prepareStatement(queryInsertCategory);
+                    p.setString(1,book.getBookID());
+                    p.setString(2, category);
+                    p.execute();
+                }
+            }
 
             closeConnection(con);
 

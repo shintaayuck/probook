@@ -2,12 +2,10 @@ package utilities;
 import org.apache.http.entity.StringEntity;
 import org.json.JSONObject;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpEntity;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.entity.StringEntity;
-import org.apache.commons.logging.LogFactory;
+
 
 public class Transfer {
     private String card_no_sender;

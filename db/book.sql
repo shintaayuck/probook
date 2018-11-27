@@ -51,6 +51,7 @@ DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books` (
   `bookid` varchar(15) NOT NULL,
   `price` int(11) NOT NULL DEFAULT -1,
+  `boughtqty` int(11) DEFAULT 0,
   PRIMARY KEY (`bookid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -95,4 +96,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-27 15:52:33
+-- Dump completed on 2018-11-27 19:39:31
