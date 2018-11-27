@@ -5,8 +5,6 @@ import utilities.Transfer;
 import org.json.JSONObject;
 import org.json.JSONException;
 import utilities.ConnectionMySQL;
-import utilities.GoogleBookAPI;
-import utilities.JsonToBook;
 
 import java.sql.*;
 import javax.jws.WebService;
@@ -18,12 +16,13 @@ import static utilities.ConnectionMySQL.getConnection;
 public class BuyBookServiceImpl implements BuyBookService {
     @Override
     public BuyStatus buyBook(String bookID, Integer bookAmount, String senderCardNumber) {
-        String receiverCardNumber = "1111222233334444";
+        String receiverCardNumber = "0000000000000000";
         //SELECT price FROM book WHERE book_id = bookID
         Integer price = 50000;
         Integer amount = bookAmount * price;
         Transfer transfer = new Transfer(senderCardNumber, receiverCardNumber, amount);
         JSONObject hasilJSON = transfer.transferToBuy();
+        System.out.println("transferred, but...");
         try {
             String strcode = hasilJSON.get("code").toString();
             Integer code = Integer.parseInt(strcode);
