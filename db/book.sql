@@ -24,11 +24,7 @@ DROP TABLE IF EXISTS `book_category`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `book_category` (
   `bookid` varchar(15) DEFAULT NULL,
-  `category` varchar(30) DEFAULT NULL,
-  KEY `bookid` (`bookid`),
-  KEY `category` (`category`),
-  CONSTRAINT `book_category_ibfk_1` FOREIGN KEY (`bookid`) REFERENCES `books` (`bookid`),
-  CONSTRAINT `book_category_ibfk_2` FOREIGN KEY (`category`) REFERENCES `categories` (`category`)
+  `category` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,6 +34,7 @@ CREATE TABLE `book_category` (
 
 LOCK TABLES `book_category` WRITE;
 /*!40000 ALTER TABLE `book_category` DISABLE KEYS */;
+INSERT INTO `book_category` VALUES ('lIA8DwAAQBAJ','Fiction'),('BwA3DwAAQBAJ','Uncategorized'),('YjnTCgAAQBAJ','Uncategorized'),('nmx2DwAAQBAJ','Fiction'),('gUdFDwAAQBAJ','Juvenile Fiction');
 /*!40000 ALTER TABLE `book_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,29 +59,8 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
+INSERT INTO `books` VALUES ('BwA3DwAAQBAJ',17500,0),('gUdFDwAAQBAJ',51000,0),('lIA8DwAAQBAJ',67000,0),('nmx2DwAAQBAJ',35000,0),('YjnTCgAAQBAJ',0,0);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `categories`
---
-
-DROP TABLE IF EXISTS `categories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `categories` (
-  `category` varchar(45) NOT NULL,
-  PRIMARY KEY (`category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `categories`
---
-
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -96,4 +72,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-27 19:39:31
+-- Dump completed on 2018-11-27 22:17:05
