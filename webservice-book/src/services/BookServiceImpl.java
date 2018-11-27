@@ -9,10 +9,7 @@ import utilities.GoogleBookAPI;
 import utilities.JsonToBook;
 
 import javax.jws.WebService;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -109,33 +106,30 @@ public class BookServiceImpl implements BookService {
      */
     protected Boolean insertBook(Book book) {
         
-//        try {
-//            String query = "INSERT INTO book VALUES (?, ?, ?, ? );";
-//            Connection con = getConnection();
-//
-//            PreparedStatement p = con.prepareStatement(query);
-//            p.setString(1, book.getBookID());
-//            p.setString(2, book.get);
-//
-//            ResultSet resultSet = p.executeQuery();
-//
-//            Integer price;
-//            if(resultSet.next()){
-//                price = resultSet.getInt("price");
-//            } else {
-//                price = -1;
-//            }
-//
-//            closeConnection(con);
-//
-//            return price;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            String query = "INSERT INTO book VALUES (?, ?, ?, ? );";
+            Connection con = getConnection();
+
+            PreparedStatement p = con.prepareStatement(query);
+            p.setString(1, book.getBookID());
+            
+            Array categories = con.createArrayOf("varchar", book.getCategories());
+            p.setArray(2, categories);
+            p.setInt(3, book.getBookPrice());
+            p.setInt(4,0);
+            
+            p.execute();
+
+            closeConnection(con);
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     
-        return true;
+        return false;
     }
 }
     
