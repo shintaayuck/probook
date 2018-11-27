@@ -10,15 +10,17 @@ public class Book implements Serializable {
     private String[] authors;
     private String description;
     private Integer bookPrice;
-    private String category;
+    private String[] categories;
+    
     
     public Book() {}
-    public Book(String bookID, String title, String[] authors, String description, Integer bookPrice) {
+    public Book(String bookID, String title, String[] authors, String description, Integer bookPrice, String[] categories) {
         this.bookID = bookID;
         this.title = title;
         this.authors = authors;
         this.description = description;
         this.bookPrice = bookPrice;
+        this.categories = categories;
     }
     
     public String getBookID() {
@@ -59,6 +61,14 @@ public class Book implements Serializable {
     
     public void setBookPrice(Integer bookPrice) {
         this.bookPrice = bookPrice;
+    }
+    
+    public String[] getCategories() {
+        return categories;
+    }
+    
+    public void setCategory(String[] categories) {
+        this.categories = categories;
     }
     
     @Override

@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static utilities.ConnectionMySQL.closeConnection;
+import static utilities.ConnectionMySQL.getConnection;
 
 @WebService()
 public class BookServiceImpl implements BookService {
@@ -51,8 +52,7 @@ public class BookServiceImpl implements BookService {
     protected Integer getPrice(String id) {
         try {
             String query = "SELECT price FROM book WHERE idbook = (?);";
-            ConnectionMySQL connectionMySQL = new ConnectionMySQL();
-            Connection con = connectionMySQL.getConnection();
+            Connection con = getConnection();
         
             PreparedStatement p = con.prepareStatement(query);
             p.setString(1, id);
@@ -108,6 +108,33 @@ public class BookServiceImpl implements BookService {
      * @return boolean
      */
     protected Boolean insertBook(Book book) {
+        
+//        try {
+//            String query = "INSERT INTO book VALUES (?, ?, ?, ? );";
+//            Connection con = getConnection();
+//
+//            PreparedStatement p = con.prepareStatement(query);
+//            p.setString(1, book.getBookID());
+//            p.setString(2, book.get);
+//
+//            ResultSet resultSet = p.executeQuery();
+//
+//            Integer price;
+//            if(resultSet.next()){
+//                price = resultSet.getInt("price");
+//            } else {
+//                price = -1;
+//            }
+//
+//            closeConnection(con);
+//
+//            return price;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+    
         return true;
     }
 }
