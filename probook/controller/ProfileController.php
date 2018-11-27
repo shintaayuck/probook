@@ -31,7 +31,8 @@ class ProfileController extends BaseController
             "username" => $model->getUsername(),
             "email" => $model->getEmail(),
             "address" => $model->getAddress(),
-            "phone" => $model->getPhone()
+            "phone" => $model->getPhone(),
+            "cardnumber" => $model->getCardnumber()
         ];
 
         View::render("profile", $vars);

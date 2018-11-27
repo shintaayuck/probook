@@ -47,9 +47,11 @@ app.get("/api/validate", function(req,res) {
             // if (err) throw err;
             if (result[0]) {
                 message = card_no + ' is found';
+                res.header("Access-Control-Allow-Origin", "*");
                 res.status(200).send({"message" : message}); //OK
             } else {
                 message = card_no + ' is not found';
+                res.header("Access-Control-Allow-Origin", "*");
                 res.status(404).send({"message": message}); //Not Found
             }
         })

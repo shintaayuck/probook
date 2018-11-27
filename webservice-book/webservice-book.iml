@@ -24,8 +24,12 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="JAX-WS-Glassfish / JAX-WS 2.2 RI / Metro 1.X / JWSDP 2.2" level="project" />
     <orderEntry type="library" name="org.json" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" name="httpclient-4.5.6" level="project" />
     <orderEntry type="library" name="httpcore-4.4.10" level="project" />
     <orderEntry type="library" name="commons-logging-1.2" level="project" />
+=======
+    <orderEntry type="library" name="mysql-connector-java-5.1.44" level="project" />
+>>>>>>> f770b31251ce7267f8ec6511f5e285dfe9c20745
   </component>
 </module>

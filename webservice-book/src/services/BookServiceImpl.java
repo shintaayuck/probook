@@ -4,12 +4,17 @@ import models.Book;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utilities.ConnectionMySQL;
 import utilities.GoogleBookAPI;
 import utilities.JsonToBook;
 
 import javax.jws.WebService;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
+
+import static utilities.ConnectionMySQL.closeConnection;
+import static utilities.ConnectionMySQL.getConnection;
 
 @WebService()
 public class BookServiceImpl implements BookService {
@@ -27,6 +32,7 @@ public class BookServiceImpl implements BookService {
             JSONObject hasilJSON = new JSONObject(arrayResult.get(0).toString());
             JsonToBook translator = new JsonToBook();
             Book book = translator.translateToBook(hasilJSON);
+            book.setBookPrice(getPrice(bookID));
             return book;
         } catch (JSONException err) {
             System.out.println(err);
@@ -41,6 +47,29 @@ public class BookServiceImpl implements BookService {
      * @return Integer price
      */
     protected Integer getPrice(String id) {
+        try {
+            String query = "SELECT price FROM book WHERE idbook = (?);";
+            Connection con = getConnection();
+        
+            PreparedStatement p = con.prepareStatement(query);
+            p.setString(1, id);
+    
+            ResultSet resultSet = p.executeQuery();
+    
+            Integer price;
+            if(resultSet.next()){
+                price = resultSet.getInt("price");
+            } else {
+                price = -1;
+            }
+            
+            closeConnection(con);
+            
+            return price;
+            
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
     
@@ -76,7 +105,31 @@ public class BookServiceImpl implements BookService {
      * @return boolean
      */
     protected Boolean insertBook(Book book) {
-        return true;
+        
+        try {
+            String query = "INSERT INTO book VALUES (?, ?, ?, ? );";
+            Connection con = getConnection();
+
+            PreparedStatement p = con.prepareStatement(query);
+            p.setString(1, book.getBookID());
+            
+            Array categories = con.createArrayOf("varchar", book.getCategories());
+            p.setArray(2, categories);
+            p.setInt(3, book.getBookPrice());
+            p.setInt(4,0);
+            
+            p.execute();
+
+            closeConnection(con);
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    
+        return false;
     }
 }
     
