@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="968b9d12-c3c2-4bc4-94bc-250c6dee2531" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/SearchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/result.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/view/result.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/search.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/view/search.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webservice-book/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webservice-book/out/production/webservice-book/models/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/out/production/webservice-book/models/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webservice-book/out/production/webservice-book/services/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/out/production/webservice-book/services/BookService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webservice-book/out/production/webservice-book/services/BookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/out/production/webservice-book/services/BookServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webservice-book/out/production/webservice-book/services/SOAPPublisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/out/production/webservice-book/services/SOAPPublisher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webservice-book/src/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/src/models/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webservice-book/src/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/src/services/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webservice-book/src/services/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/src/services/BookServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webservice-book/src/services/RecommenderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/src/services/RecommenderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../webservice-book/src/services/SOAPPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice-book/src/services/SOAPPublisher.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -229,12 +217,12 @@
       <workItem from="1543120569538" duration="669000" />
       <workItem from="1543197188917" duration="1487000" />
       <workItem from="1543332481656" duration="5804000" />
-      <workItem from="1543387580185" duration="6140000" />
+      <workItem from="1543387580185" duration="6396000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14100000" />
+    <option name="totallyTimeSpent" value="14356000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
