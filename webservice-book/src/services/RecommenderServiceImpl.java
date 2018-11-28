@@ -11,34 +11,51 @@ import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.Random;
 import java.sql.*;
-import javax.jws.WebService;
 
 import static utilities.ConnectionMySQL.closeConnection;
 import static utilities.ConnectionMySQL.getConnection;
-@WebService(endpointInterface = "services.RecommenderService")
+
+@WebService
 public class RecommenderServiceImpl implements RecommenderService {
-    @Override
-    public Book[] getRecommendedBook(String bookID){
+    protected ArrayList<String> getCategories(String bookID){
         try {
             // Create categories array
+            ArrayList<String> categories = new ArrayList<String>();
             String queryGetCategory = "SELECT category FROM book_category WHERE bookid = (?);";
             Connection con = getConnection();
-            ArrayList<String> categories = new ArrayList<String>();
+
             PreparedStatement pc = con.prepareStatement(queryGetCategory);
             pc.setString(1, bookID);
 
+            // SALAH DISINI COYYYYYY
             boolean hasResults = pc.execute();
-            while (hasResults){
+            while (hasResults) {
+                System.out.println("Masih ada hasil");
                 ResultSet resultSetCategory = pc.getResultSet();
                 String category = resultSetCategory.getString("category");
+                System.out.println(category);
                 categories.add(category);
                 hasResults = pc.getMoreResults();
             }
-            ArrayList<Book> results = new ArrayList<Book>();
-            BookServiceImpl bookservice = new BookServiceImpl();
+            System.out.println("Categories' size");
+            System.out.println(categories.size());
 
+            closeConnection(con);
+            return categories;
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Gabisa konek SQL");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    protected ArrayList<Book> getRecommendFromDatabase(ArrayList<String> categories){
+        ArrayList<Book> results = new ArrayList<Book>();
+        try {
+            BookServiceImpl bookservice = new BookServiceImpl();
             // Get books from database
             String queryGetBookID = "SELECT bookid FROM books NATURAL JOIN (SELECT bookid FROM book_category WHERE category = (?)) AS res WHERE boughtqty = (SELECT MAX(boughtqty) FROM books NATURAL JOIN book_category WHERE category = (?) AND boughtqty <> 0);";
+            Connection con = getConnection();
             for (String category : categories) {
                 PreparedStatement p = con.prepareStatement(queryGetBookID);
                 p.setString(1, category);
@@ -52,26 +69,60 @@ public class RecommenderServiceImpl implements RecommenderService {
                 }
             }
             closeConnection(con);
+            return results;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    protected ArrayList<Book> getRecommendFromRandom(ArrayList<String> categories) {
+        BookServiceImpl bookservice = new BookServiceImpl();
+        ArrayList<Book> results = new ArrayList<Book>();
+        Random rand = new Random();
+        int i = rand.nextInt(categories.size());
+        GoogleBookAPI googleBookAPI = new GoogleBookAPI("subject:" + categories.get(i));
+        JSONObject semiResult = googleBookAPI.searchBook();
+        try {
+            JSONArray arrayResult = new JSONArray(semiResult.get("items").toString());
+            int j = rand.nextInt(arrayResult.length());
+            JSONObject resjson = new JSONObject(arrayResult.get(j).toString());
+            JsonToBook translator = new JsonToBook();
+            Book book = translator.translateToBook(resjson);
+            book.setBookPrice(bookservice.getPrice(book.getBookID()));
+            results.add(book);
+            return results;
+        } catch (JSONException err) {
+            System.out.println(err);
+            return null;
+        }
+    }
+
+    @Override
+    public Book[] getRecommendedBook(String bookID){
+        System.out.println("Book ID");
+        System.out.println(bookID);
+        // Initialize categories from bookID, results container and bookservice
+        ArrayList<Book> results = new ArrayList<Book>();
+        ArrayList<String> categories = getCategories(bookID);
+        if (categories == null){
+            return null;
+        }
+        else {
+            System.out.println("Categories");
+            System.out.println(categories.size());
+            // Check the books from database
+            results = getRecommendFromDatabase(categories);
 
             // If there is no result from database, get one random books from googlebookapi
-            if (results.isEmpty()) {
-                Random rand = new Random();
-                int i = rand.nextInt(categories.size());
-                GoogleBookAPI googleBookAPI = new GoogleBookAPI("subject:" + categories.get(i));
-                JSONObject semiResult = googleBookAPI.searchBook();
-                try {
-                    JSONArray arrayResult = new JSONArray(semiResult.get("items").toString());
-                    int j = rand.nextInt(arrayResult.length());
-                    JSONObject resjson = new JSONObject(arrayResult.get(j).toString());
-                    JsonToBook translator = new JsonToBook();
-                    Book book = translator.translateToBook(resjson);
-                    book.setBookPrice(bookservice.getPrice(book.getBookID()));
-                    results.add(book);
-                } catch (JSONException err) {
-                    System.out.println(err);
-                    return null;
+            if (results == null) {
+                System.out.println("Not found in database");
+                results = getRecommendFromRandom(categories);
+                if (results == null){
+                    System.out.println("Not found in google books api");
                 }
             }
+
             // ArrayList of Result to Array of Book
             Book[] arrResult = new Book[results.size()];
             for (int k = 0 ; k < arrResult.length ; k++){
@@ -80,9 +131,6 @@ public class RecommenderServiceImpl implements RecommenderService {
                 arrResult[k] = bookelmt;
             }
             return arrResult;
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
         }
     }
 }
