@@ -28,15 +28,43 @@ class Session
         return $sessionId;
     }
 
+    public function getBrowserName(){
+        $u_agent = $_SERVER["HTTP_USER_AGENT"];
+
+        if (preg_match('/Firefox/i',$u_agent)) {
+            $bname = 'Mozilla Firefox';
+            $ub = "Firefox";
+        } elseif (preg_match('/OPR/i',$u_agent)){
+            $bname = 'Opera';
+            $ub = "Opera";
+        } elseif( preg_match('/Chrome/i',$u_agent) && !preg_match('/Edge/i',$u_agent)){
+            $bname = 'Google Chrome';
+            $ub = "Chrome";
+        } elseif (preg_match('/Safari/i',$u_agent) && !preg_match('/Edge/i',$u_agent)){
+            $bname = 'Apple Safari';
+            $ub = "Safari";
+        } elseif (preg_match('/Edge/i',$u_agent)){
+            $bname = 'Edge';
+            $ub = "Edge";
+        } elseif (preg_match('/Trident/i',$u_agent)){
+            $bname = 'Internet Explorer';
+            $ub = "MSIE";
+        }
+        return $bname;
+    }
+
+    public function getIPAddr(){
+        $ip = "192.100.11.022";
+        return $ip;
+    }
+
     public function setSession($userId, $username) {
         if ($this->inSession()) {
             return;
         }
 
-        $browserinfo = get_browser($_SERVER['HTTP_USER_AGENT'], true);
-        $browsername = $browserinfo['browser'];
-
-        $ip = $_SERVER['REMOTE_ADDR'];
+        $browsername = $this->getBrowserName();
+        $ip = $this->getIPAddr();
         $sessionId = $this->generateSessionId();
 
         if ($this->session->checkSessionUnavailable($userId)) {
@@ -57,7 +85,20 @@ class Session
             if (($this->session->getBrowser() == $browsername) and ($this->session->getIp() == $ip)){
                 setcookie("session", $this->session->getSessionId());
                 setcookie("username", $username); 
-            }           
+            }
+            elseif (($this->session->getBrowser() != $browsername) and ($this->session->getIp() == $ip)){
+                session_start();
+                $this->session->setSessionId($sessionId);
+                $this->session->setUserId($userId);
+                $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+10 minutes")));
+                $this->session->setBrowser($browsername);
+                $this->session->setIp($ip);
+
+                $this->session->insert();
+
+                setcookie("session", $sessionId);
+                setcookie("username", $username);
+            }               
         }
         return;
     }
@@ -81,9 +122,8 @@ class Session
             return False;
         }
 
-        $browserinfo = get_browser($_SERVER['HTTP_USER_AGENT'], true);
-        $browsername = $browserinfo['browser'];
-        $ip = $_SERVER['REMOTE_ADDR'];
+        $browsername = $this->getBrowserName();
+        $ip = $this->getIPAddr();
 
         if (($this->session->getBrowser() != $browsername) and ($this->session->getIp() == $ip)){
             $this->session->delete();
