@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app = "searchApp">
 
 <head>
     <meta charset="UTF-8">
@@ -13,13 +13,13 @@
     <script type="text/javascript" src="/static/search.js"></script>
 </head>
 
-<body>
+<body ng-controller = "searchController">
     <?php require "view/header.phtml"; ?>
     <section>
         <form id="book-search" action="/search/">
             <h1>Search Book</h1>
             <div>
-                <input class="book-search-field" name="query" type="text" placeholder="Input search terms" >
+                <input class="book-search-field" name="query" type="text" ng-model="searchBook" ng-change="change(text)" placeholder="Input search terms" >
             </div>
             <div>
                 <button class="book-search-field" id="book-search-submit" onclick="search()" type="button">Search</button>

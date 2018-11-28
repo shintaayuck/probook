@@ -10,15 +10,14 @@ import java.util.Arrays;
 
 public class SOAPPublisherClient {
     public static void main(String[] args) throws MalformedURLException {
-        URL wsdlURL = new URL("http://localhost:8000/api/books?wsdl");
+        URL wsdlURL = new URL("http://localhost:5000/api/books?wsdl");
     
         QName qName = new QName("http://services/", "BookServiceImplService");
     
         Service service = Service.create(wsdlURL, qName);
         
         BookService bs = service.getPort(BookService.class);
-        
-        
+
         bs.searchBook("Shinta");
         System.out.println("WEY");
     }

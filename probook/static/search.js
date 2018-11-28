@@ -8,3 +8,13 @@ function search() {
     box.setAttribute("invalid", "");
   }
 }
+
+App.controller('searchController', function($scope, $http, $timeout) {
+    $scope.searchBook = null;
+    $scope.change = function(text) {
+        valtosend = $scope.searchText;
+        $http.get('http://website/getdatafunction/' + valtosend).then(function(result){
+            $scope.entries = result.data;
+        });
+    };
+});
