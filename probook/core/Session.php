@@ -33,28 +33,28 @@ class Session
 
         if (preg_match('/Firefox/i',$u_agent)) {
             $bname = 'Mozilla Firefox';
-            $ub = "Firefox";
         } elseif (preg_match('/OPR/i',$u_agent)){
             $bname = 'Opera';
-            $ub = "Opera";
         } elseif( preg_match('/Chrome/i',$u_agent) && !preg_match('/Edge/i',$u_agent)){
             $bname = 'Google Chrome';
-            $ub = "Chrome";
         } elseif (preg_match('/Safari/i',$u_agent) && !preg_match('/Edge/i',$u_agent)){
             $bname = 'Apple Safari';
-            $ub = "Safari";
         } elseif (preg_match('/Edge/i',$u_agent)){
             $bname = 'Edge';
-            $ub = "Edge";
         } elseif (preg_match('/Trident/i',$u_agent)){
             $bname = 'Internet Explorer';
-            $ub = "MSIE";
         }
         return $bname;
     }
 
     public function getIPAddr(){
-        $ip = "192.100.11.022";
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
         return $ip;
     }
 
@@ -72,7 +72,7 @@ class Session
 
             $this->session->setSessionId($sessionId);
             $this->session->setUserId($userId);
-            $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+10 minutes")));
+            $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+1 minutes")));
             $this->session->setBrowser($browsername);
             $this->session->setIp($ip);
 
@@ -86,21 +86,21 @@ class Session
                 setcookie("session", $this->session->getSessionId());
                 setcookie("username", $username); 
             }
-            elseif (($this->session->getBrowser() != $browsername) and ($this->session->getIp() == $ip)){
+            if (($this->session->getBrowser() != $browsername) or ($this->session->getIp() != $ip)){
                 session_start();
                 $this->session->setSessionId($sessionId);
                 $this->session->setUserId($userId);
-                $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+10 minutes")));
+                $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+1 minutes")));
                 $this->session->setBrowser($browsername);
                 $this->session->setIp($ip);
 
                 $this->session->insert();
 
                 setcookie("session", $sessionId);
-                setcookie("username", $username);
-            }               
+                setcookie("username", $username);             
+            }
+            return;
         }
-        return;
     }
 
     public function inSession() {
