@@ -68,32 +68,37 @@ app.post("/api/transfer", function(req,res) {
   if ((card_no_sender) && (card_no_receiver) && (amount)) {
     var sql = 'SELECT balance FROM customer WHERE cardnumber = ?';
     con.query(sql, card_no_sender, function(err, result){
-      if (err) res.status(400).send({"message": "Bad request", "code" : 1});
-      if (result[0].balance < amount) {
-        res.status(400).send({"message": "Not enough amount", "code" : 2});
-      }
-      else {
-        var sql = 'UPDATE customer SET balance = balance - ? WHERE cardnumber = ?';
-        var val = [amount, card_no_sender];
-        con.query(sql, val, function(err, result){
-          if (err) res.status(500).send({"message": "Error updating sender balance", "code" : 3});
-          console.log("1 record updated");
-        })
-        var sql = 'UPDATE customer SET balance = balance + ? WHERE cardnumber = ?';
-        var val = [amount, card_no_receiver];
-        con.query(sql, val, function(err, result){
-          if (err) res.status(500).send({"message": "Error updating receiver balance", "code" : 3});
-          console.log("1 record updated");
-        })
-        var sql = 'INSERT INTO transaction(sender,recipient,amount) VALUES (?,?,?)';
-        var val = [card_no_sender, card_no_receiver, amount];
-        con.query(sql, val, function(err, result){
-          if (err) res.status(500).send({"message": "Error inserting transaction to DB", "code" : 3});
-          console.log("1 record inserted")
-        })
-        res.status(200).send({"message": "Transaction success", "code" : 0});
+      if (result[0]) {
+        if (result[0].balance < amount) {
+          res.status(400).send({"message": "Not enough amount", "code" : 2});
+        }
+        else {
+          var sql = 'UPDATE customer SET balance = balance - ? WHERE cardnumber = ?';
+          var val = [amount, card_no_sender];
+          con.query(sql, val, function(err, result){
+            if (err) res.status(500).send({"message": "Error updating sender balance", "code" : 3});
+            console.log("1 record updated");
+          })
+          var sql = 'UPDATE customer SET balance = balance + ? WHERE cardnumber = ?';
+          var val = [amount, card_no_receiver];
+          con.query(sql, val, function(err, result){
+            if (err) res.status(500).send({"message": "Error updating receiver balance", "code" : 3});
+            console.log("1 record updated");
+          })
+          var sql = 'INSERT INTO transaction(sender,recipient,amount) VALUES (?,?,?)';
+          var val = [card_no_sender, card_no_receiver, amount];
+          con.query(sql, val, function(err, result){
+            if (err) res.status(500).send({"message": "Error inserting transaction to DB", "code" : 3});
+            console.log("1 record inserted")
+          })
+          res.status(200).send({"message": "Transaction success", "code" : 0});
+        }
+      } else {
+        res.status(404).send({"message": "Not found", "code" : 4});
       }
     })
+  } else {
+    res.status(400).send({"message": "Bad request", "code" : 1});
   }
 });
 
