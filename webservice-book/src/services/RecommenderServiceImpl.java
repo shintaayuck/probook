@@ -19,7 +19,7 @@ public class RecommenderServiceImpl implements RecommenderService {
         BookServiceImpl bookservice = new BookServiceImpl();
         // Get books from database
         try {
-            String queryGetCategory = "SELECT bookid FROM books NATURAL JOIN (SELECT bookid FROM book_category WHERE category = (?)) AS res WHERE boughtqty = (SELECT MAX(boughtqty) FROM books NATURAL JOIN book_category WHERE category = (?));";
+            String queryGetCategory = "SELECT bookid FROM books NATURAL JOIN (SELECT bookid FROM book_category WHERE category = (?)) AS res WHERE boughtqty = (SELECT MAX(boughtqty) FROM books NATURAL JOIN book_category WHERE category = (?) AND boughtqty <> 0);";
             for (String category : categories) {
                 p = con.prepareStatement(queryGetCategory);
                 p.setString(1, category);
@@ -39,12 +39,24 @@ public class RecommenderServiceImpl implements RecommenderService {
                 // Get one random books from googlebookapi
                 Random rand = new Random();
                 int i = rand.nextInt(categories.size());
-
+                GoogleBookAPI googleBookAPI = new GoogleBookAPI("subject:" + categories[i]);
+                JSONObject semiResult = googleBookAPI.searchBook();
+                try {
+                    JSONArray arrayResult = new JSONArray(semiResult.get("items").toString());
+                    int j = rand.nextInt(resultItems.length());
+                    JSONObject resjson = new JSONObject(arrayResult.get(j).toString());
+                    JsonToBook translator = new JsonToBook();
+                    Book book = translator.translateToBook(resjson);
+                    book.setBookPrice(getPrice(bookID));
+                    return book;
+                } catch (JSONException err) {
+                    System.out.println(err);
+                }
+                return null;
             }
             else {
                 return results;
             }
-
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
