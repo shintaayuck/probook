@@ -44,29 +44,29 @@ public class BookServiceImpl implements BookService {
         try {
             String query = "SELECT price FROM books WHERE bookid = (?);";
             Connection con = getConnection();
-    
+
             PreparedStatement p = con.prepareStatement(query);
             p.setString(1, id);
-    
+
             ResultSet resultSet = p.executeQuery();
-    
+
             Integer price;
             if (resultSet.next()) {
                 price = resultSet.getInt("price");
             } else {
                 price = -1;
             }
-            
+
             closeConnection(con);
-            
+
             return price;
-            
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return 0;
     }
-    
+
     @Override
     public Book[] searchBook(String query) {
         System.out.println(query);

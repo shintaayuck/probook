@@ -1,4 +1,4 @@
-<?php
+    <?php
 /**
  * Created by PhpStorm.
  * User: Gabriel B.R
@@ -32,14 +32,34 @@ class Session
         if ($this->inSession()) {
             return;
         }
-        $sessionId = $this->generateSessionId();
-        $this->session->setSessionId($sessionId);
-        $this->session->setUserId($userId);
-        $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+1 days")));
-        $this->session->insert();
 
-        setcookie("session", $sessionId);
-        setcookie("username", $username);
+        $browserinfo = get_browser($_SERVER['HTTP_USER_AGENT'], true);
+        $browsername = $browserinfo['browser'];
+
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $sessionId = $this->generateSessionId();
+
+        if ($this->session->checkSessionUnavailable($userId)) {
+            session_start();
+
+            $this->session->setSessionId($sessionId);
+            $this->session->setUserId($userId);
+            $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+10 minutes")));
+            $this->session->setBrowser($browsername);
+            $this->session->setIp($ip);
+
+            $this->session->insert();
+
+            setcookie("session", $sessionId);
+            setcookie("username", $username);
+        } else {
+            $this->session->loadByUserID($userId);
+            if (($this->session->getBrowser() == $browsername) and ($this->session->getIp() == $ip)){
+                setcookie("session", $this->session->getSessionId());
+                setcookie("username", $username); 
+            }           
+        }
+        return;
     }
 
     public function inSession() {
@@ -61,6 +81,19 @@ class Session
             return False;
         }
 
+        $browserinfo = get_browser($_SERVER['HTTP_USER_AGENT'], true);
+        $browsername = $browserinfo['browser'];
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        if (($this->session->getBrowser() != $browsername) and ($this->session->getIp() == $ip)){
+            $this->session->delete();
+            return False;
+        }
+
+        if ($this->session->getIp() != $ip){
+            $this->session->delete();
+            return False;          
+        }
         return $this->session->getUserId();
     }
 
@@ -73,6 +106,7 @@ class Session
         $this->session->setSessionId($sessionId);
         $this->session->load();
         $this->session->delete();
+        session_destroy();
 
         unset($_COOKIE["session"]);
     }
