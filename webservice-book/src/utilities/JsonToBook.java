@@ -13,7 +13,8 @@ public class JsonToBook {
         String description = "";
         Integer price = 0;
         String[] categories = {""};
-
+        String imgsrc = "";
+        
 
         id = jsonObject.get("id").toString();
 
@@ -49,9 +50,21 @@ public class JsonToBook {
                 categories[j] = categoriesJSON.get(j).toString();
             }
         } else {
-                categories = new String[1];
-                categories[0] = "Uncategorized";
+            categories = new String[1];
+            categories[0] = "Uncategorized";
+        }
+        
+        if (volumeInfo.has("imageLinks")) {
+            JSONObject imageLinks = new JSONObject(volumeInfo.get("imageLinks").toString());
+            if (imageLinks.has("thumbnail")) {
+                imgsrc = imageLinks.get("thumbnail").toString();
+            } else {
+                imgsrc = null;
             }
+        } else {
+            imgsrc = null;
+        }
+        
 
 
         if (jsonObject.has("saleInfo")) {
@@ -63,7 +76,8 @@ public class JsonToBook {
                 }
             }
         }
-        Book bookResult = new Book(id, title, authors, description, price, categories);
+        
+        Book bookResult = new Book(id, title, authors, description, price, categories, imgsrc);
         return bookResult;
        
     }
