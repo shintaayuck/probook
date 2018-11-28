@@ -5,6 +5,7 @@ import models.Book;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
+import java.util.ArrayList;
 
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
@@ -17,5 +18,5 @@ public interface RecommenderService {
      * @return Book
      */
     @WebMethod
-    public Book[] getRecommendedBook(String[] categories);
+    public Book[] getRecommendedBook(String bookID);
 }
