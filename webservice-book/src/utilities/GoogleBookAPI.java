@@ -11,13 +11,12 @@ public class GoogleBookAPI {
         this.queryTitle = queryTitle;
     }
     
-    
     public JSONObject searchBook() {
         try {
             HTTPRequest googleBookAPIRequest = new HTTPRequest(String.format("https://www.googleapis.com/books/v1/volumes?q=%s&key=%s", this.queryTitle, this.API_KEY));
             String resultRequest = googleBookAPIRequest.doRequest("GET");
-            JSONObject hasilJSON = new JSONObject(resultRequest);
-            return hasilJSON;
+            JSONObject hasiljson = new JSONObject(resultRequest);
+            return hasiljson;
         } catch (Exception err) {
             System.out.println(err);
         }

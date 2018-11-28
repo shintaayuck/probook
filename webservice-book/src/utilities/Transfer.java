@@ -5,6 +5,10 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.commons.logging.LogFactory;
+import org.apache.http.util.EntityUtils;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 
 
 public class Transfer {
@@ -23,19 +27,31 @@ public class Transfer {
             String urlpost = "http://localhost:3000/api/transfer";
             HttpClient httpclient = HttpClientBuilder.create().build();
             HttpPost httppost = new HttpPost(urlpost);
-
             StringEntity pars = new StringEntity(
                     "{\"card_no_sender\":\"" + this.card_no_sender +
                     "\",\"card_no_receiver\":\"" + this.card_no_receiver +
                     "\",\"amount\":" + this.amount + "}");
-            httppost.addHeader("content-type", "application/x-www-form-urlencoded");
+            httppost.addHeader("content-type", "application/json");
             httppost.setEntity(pars);
+            Header[] headers = httppost.getAllHeaders();
+            String content = EntityUtils.toString(pars);
+            System.out.println(httppost.toString());
+            for (Header header : headers) {
+                System.out.println(header.getName() + ": " + header.getValue());
+            }
+            System.out.println();
+            System.out.println(content);
+            System.out.println("executing request");
             HttpResponse response = httpclient.execute(httppost);
-            JSONObject JSONresponse = new JSONObject(response);
+            HttpEntity entity = response.getEntity();
+            String strentity = EntityUtils.toString(entity);
+            JSONObject JSONresponse = new JSONObject(strentity);
+            System.out.println("sending JSON");
             return JSONresponse;
         } catch (Exception err) {
             System.out.println(err);
         }
+        System.out.println("sending null");
         return null;
     }
 }

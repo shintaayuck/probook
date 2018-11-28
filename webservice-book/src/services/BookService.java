@@ -7,8 +7,16 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 @WebService
-@SOAPBinding(style = SOAPBinding.Style.RPC)
+@SOAPBinding(style = SOAPBinding.Style.DOCUMENT, use = SOAPBinding.Use.LITERAL)
 public interface BookService {
+    
+    /**
+     * Get array of book based on query, fetch the data from Google Books API. Save top 5 result to database.
+     * @param query
+     * @return Book[]
+     */
+    @WebMethod
+    public Book[] searchBook(String query);
     
     /**
      * Get Book based on bookID, fetch book from GoogleBooksAPI, check if exist in database.
@@ -19,11 +27,5 @@ public interface BookService {
     @WebMethod
     public Book getBook(String bookID);
     
-    /**
-     * Get array of book based on query, fetch the data from Google Books API. Save top 5 result to database.
-     * @param query
-     * @return Book[]
-     */
-    @WebMethod
-    public Book[] searchBook(String query);
+    
 }
