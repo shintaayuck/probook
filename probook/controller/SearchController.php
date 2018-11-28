@@ -12,6 +12,13 @@ class SearchController extends BaseController
 
     }
 
+    public function searchByQuery($query) {
+        $client = new SoapClient('http://localhost:5000/api/books?wsdl');
+        $param = array("arg0"=>$query);
+//        var_dump(json_encode($client->searchBook($param)->return));
+       return json_decode(json_encode($client->searchBook($param)->return));
+    }
+
     public function landing()
     {
         $vars = [
@@ -25,20 +32,15 @@ class SearchController extends BaseController
 
             $vars["query"] = $query;
             $model = new BookModel();
+//            var_dump($this->searchByQuery($query));
+//            $vars["result"] = $this->searchByQuery($query);
+            var_dump($this->searchByQuery($query));
+            var_dump($model->searchByKeyword($query));
             $vars["result"] = $model->searchByKeyword($query);
+
 
             View::render("result", $vars);
         }
-
-         $client = new SoapClient('http://localhost:5000/api/books?wsdl', array('cache-wsdl' => WSDL_CACHE_NONE));
-         $client->__getFunctions();
-         echo("HOLAA");
-         $resultinjson = $client->searchBook("SHINTA")->return[0];
-         var_dump($resultinjson);
-         $title = $resultinjson->title;
-//         var_dump($title);
-         echo("AUOOOOOOOOOOOOOOO");
-
 
     }
 }

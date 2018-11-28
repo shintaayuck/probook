@@ -22,7 +22,10 @@
       </div>
     </div>
     <div id="result-item-list">
-      <?php 
+<!--        --><?php
+//            var_dump($result);
+//        ?>
+      <?php
       foreach($result as $item) {
         View::render("result_item", $item);
       }

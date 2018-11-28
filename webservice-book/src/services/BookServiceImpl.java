@@ -4,22 +4,17 @@ import models.Book;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utilities.ConnectionMySQL;
 import utilities.GoogleBookAPI;
 import utilities.JsonToBook;
 
 import javax.jws.WebService;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
 
 import static utilities.ConnectionMySQL.closeConnection;
 import static utilities.ConnectionMySQL.getConnection;
 
 @WebService()
 public class BookServiceImpl implements BookService {
-    private static Map<String, Book> books = new HashMap<String, Book>();
-    
     
     @Override
     public Book getBook(String bookID) {

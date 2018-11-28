@@ -2,6 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9929f67d-6903-47a8-8aad-bd9dc2fe4a2d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../probook/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../probook/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../probook/controller/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../probook/controller/SearchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../probook/static/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/../probook/static/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../probook/view/result.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/../probook/view/result.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../probook/view/search.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/../probook/view/search.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/webservice-book/models/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/webservice-book/models/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/webservice-book/services/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/webservice-book/services/BookService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/webservice-book/services/BookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/webservice-book/services/BookServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/webservice-book/services/SOAPPublisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/webservice-book/services/SOAPPublisher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/BookServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/SOAPPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/SOAPPublisher.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,24 +31,34 @@
       </map>
     </option>
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/webservice_book$SOAPPublisher.ic" NAME="SOAPPublisher Coverage Results" MODIFIED="1543394100350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>services.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="201" />
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1646906209">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="4" />
+          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="iml" value="1" />
-          <entry key="java" value="39" />
+          <entry key="java" value="41" />
           <entry key="jsp" value="1" />
           <entry key="xml" value="5" />
         </counts>
@@ -43,20 +66,20 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="39" />
+          <entry key="JAVA" value="41" />
           <entry key="JSP" value="1" />
           <entry key="XML" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7286" />
+          <entry key="java" value="7561" />
           <entry key="xml" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7286" />
+          <entry key="JAVA" value="7561" />
           <entry key="XML" value="45" />
         </counts>
       </usages-collector>
@@ -67,33 +90,54 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/BookServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="76" column="14" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="14" />
+            <state relative-caret-position="146">
+              <caret line="70" column="44" selection-start-line="70" selection-start-column="44" selection-end-line="70" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1543332207529" expanded="true" signature="3361:3379" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/BookService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="9" column="79" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1543394165487" expanded="true" signature="3200:3218" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/services/BookService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="77">
+              <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/BuyBookService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/SOAPPublisher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+            <state relative-caret-position="120">
+              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/SOAPPublisherClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,7 +154,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utilities/JsonToBook.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-32">
+            <state relative-caret-position="75">
               <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
             </state>
           </provider>
@@ -119,8 +163,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,6 +186,7 @@
       <find>put</find>
       <find>mysql</find>
       <find>system</find>
+      <find>masuj</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -163,15 +208,15 @@
         <option value="$PROJECT_DIR$/src/services/BuyBookServiceImpl.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/utilities/ConnectionMySQL.java" />
-        <option value="$PROJECT_DIR$/src/models/Book.java" />
         <option value="$PROJECT_DIR$/src/utilities/JsonToBook.java" />
         <option value="$PROJECT_DIR$/src/services/RecommenderServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/utilities/Transfer.java" />
         <option value="$PROJECT_DIR$/src/utilities/GoogleBookAPI.java" />
-        <option value="$PROJECT_DIR$/src/services/BookService.java" />
         <option value="$PROJECT_DIR$/src/services/SOAPPublisherClient.java" />
-        <option value="$PROJECT_DIR$/src/services/BookServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/models/Book.java" />
         <option value="$PROJECT_DIR$/src/services/SOAPPublisher.java" />
+        <option value="$PROJECT_DIR$/src/services/BookService.java" />
+        <option value="$PROJECT_DIR$/src/services/BookServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -248,18 +293,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="webservice-book" type="b2602c69:ProjectViewProjectNode" />
               <item name="webservice-book" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webservice-book" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webservice-book" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="webservice-book" type="b2602c69:ProjectViewProjectNode" />
@@ -278,26 +317,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="webservice-book" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webservice-book" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utilities" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="googleapis&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543331688866" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543392042997" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -375,18 +410,20 @@
       <workItem from="1543198737530" duration="3603000" />
       <workItem from="1543236855946" duration="10189000" />
       <workItem from="1543285199267" duration="2062000" />
-      <workItem from="1543331892760" duration="1026000" />
+      <workItem from="1543331892760" duration="3514000" />
+      <workItem from="1543387586078" duration="2874000" />
+      <workItem from="1543393204012" duration="1608000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42669000" />
+    <option name="totallyTimeSpent" value="49639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -397,7 +434,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952926" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49713877" visible="true" weight="0.32650602" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.33618233" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.33614457" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -417,10 +454,10 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32950193" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32904148" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -430,8 +467,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952926" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49713877" visible="true" weight="0.32763532" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.33618233" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49713877" visible="true" weight="0.32650602" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.33614457" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -465,7 +502,6 @@
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/BuyBookService.java" />
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/sun-jaxws.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -536,51 +572,27 @@
     <entry file="file://$PROJECT_DIR$/webservice-book.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/BuyBookService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/SOAPPublisher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/SOAPPublisherClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="150">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/BookService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="79" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/BookServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="76" column="14" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1543332207529" expanded="true" signature="3361:3379" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/JsonToBook.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-32">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -591,10 +603,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/SOAPPublisher.java">
+    <entry file="file://$PROJECT_DIR$/src/utilities/JsonToBook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        <state relative-caret-position="75">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/BookServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="70" column="44" selection-start-line="70" selection-start-column="44" selection-end-line="70" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1543394165487" expanded="true" signature="3200:3218" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/BookService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
