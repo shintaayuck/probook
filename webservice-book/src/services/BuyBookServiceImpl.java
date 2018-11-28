@@ -55,7 +55,6 @@ public class BuyBookServiceImpl implements BuyBookService {
         Integer amount = bookAmount * price;
         Transfer transfer = new Transfer(senderCardNumber, receiverCardNumber, amount);
         JSONObject hasilJSON = transfer.transferToBuy();
-        System.out.println("transferred, but...");
         try {
             String strcode = hasilJSON.get("code").toString();
             Integer code = Integer.parseInt(strcode);
