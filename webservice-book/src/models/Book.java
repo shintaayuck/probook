@@ -4,7 +4,7 @@ package models;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class Book implements Serializable {
+public class Book {
     private String bookID;
     private String title;
     private String[] authors;
