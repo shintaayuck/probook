@@ -23,15 +23,23 @@ class BookController extends BaseController
         $result = $client->getBook($param)->return;
 
         $book["name"] = $result->title;
-        $book["author"] = $result->authors;
+        if (sizeof($result->authors) > 1) {
+            $book["author"] = $result->authors[0];
+            for ($i=1; $i < sizeof($result->authors); $i++) {
+                $book["author"] .= ", " . $result->authors[$i];
+            }
+        } else {
+            $book["author"] = $result->authors;
+        }
         $book["description"] = $result->description;
         $book["imgsrc"] = $result->imgsrc;
         $book["rating"] = 4;
         $book["price"] = $result->bookPrice;
 
         $client_recomm = new SoapClient('http://localhost:5000/api/recommender?wsdl');
-        $param = array("arg0"=>$categories, "arg1"->$id);
-        $result_recomm = $client_recomm->getRecommendedBook($param)->return;
+        $param = array("arg0"=>$result->categories, "arg1"=>$result->bookID);
+        var_dump($client_recomm->getRecommendedBook($param)->return);
+        $result_recomm = $client_recomm->getRecommendedBook($param);
         var_dump($result_recomm);
         $recommend["name"] = $result_recomm->title;
         $recommend["author"] = $result_recomm->authors;
@@ -39,7 +47,6 @@ class BookController extends BaseController
         $recommend["imgsrc"] = $result_recomm->imgsrc;
         $recommend["rating"] = 4;
         $recommend["price"] = $result_recomm->bookPrice;
-        return $recommend;
 
         $vars["book"] = $book;
         $vars["review"] = $model->getBookReviews();
