@@ -1,0 +1,81 @@
+<!--/**-->
+<!-- * Created by PhpStorm.-->
+<!-- * User: shintaayuck-->
+<!-- * Date: 28/11/18-->
+<!-- * Time: 21.30-->
+<!-- */-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/header.css">
+    <link rel="stylesheet" type="text/css" href="/static/search.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito:600" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+
+    <script type="text/javascript" src="/static/search.js"></script>
+</head>
+
+<body ng-app = "searchApp" ng-controller = "searchController as result">
+    <?php require "view/header.phtml"; ?>
+<!--    Search Input Section-->
+    <section>
+        <form id="book-search" action="/search/">
+            <h1>Search Book</h1>
+            <div>
+                <input class="book-search-field" name="query" type="text" ng-model="result.query" placeholder="Input search terms" >
+            </div>
+            <div>
+                <button type="submit" class="book-search-field" id="book-search-submit" ng-click="search(query)" type="button">Search</button> <!--onclick="search()"-->
+            </div>
+        </form>
+    </section>
+    <div class='loader' style="display: none" id='loader'> </div>
+
+<!-- Search result-->
+    <section class="" id="search-results" ng-if="result.books.length>0">
+
+<!--        Search result head-->
+        <div class="container" id="result-head">
+            <div id="result-head-title">
+                <h1>Search Results for "{{result.query}}"</h1>
+            </div>
+            <div id="result-head-desc">
+                Found <span id="count">{{(result.books).length}}></span> result(s).
+            </div>
+        </div>
+
+<!--        Search result items-->
+        <div ng-repeat="book in result.books" class="result-item">
+            <div class="result-item-top container">
+                <img class="result-item-image " ng-src="{{book.imgsrc}}">
+                <div class="result-item-desc">
+                    <div class="result-item-title">
+                        <a href="/book/{{book.bookid}}">
+                            {{book.name}}
+                        </a>
+                    </div>
+                    <div class="result-item-rating">
+                        {{book.authors}} - {{book.rating}} / 5.0 ({{book.vote}} Vote(s))
+                    </div>
+                    <div class="result-item-desc">
+                        {{book.description}}
+                    </div>
+                </div>
+            </div>
+            <div class="result-item-button">
+                <a href="/book{{book.bookid}}">
+                    <button class="button">Detail</button>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

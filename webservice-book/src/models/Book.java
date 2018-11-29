@@ -11,16 +11,19 @@ public class Book {
     private String description;
     private Integer bookPrice;
     private String[] categories;
+    private String imgsrc;
     
     
     public Book() {}
-    public Book(String bookID, String title, String[] authors, String description, Integer bookPrice, String[] categories) {
+    
+    public Book(String bookID, String title, String[] authors, String description, Integer bookPrice, String[] categories, String imgsrc) {
         this.bookID = bookID;
         this.title = title;
         this.authors = authors;
         this.description = description;
         this.bookPrice = bookPrice;
         this.categories = categories;
+        this.imgsrc = imgsrc;
     }
     
     public String getBookID() {
@@ -67,12 +70,20 @@ public class Book {
         return categories;
     }
     
-    public void setCategory(String[] categories) {
+    public void setCategories(String[] categories) {
         this.categories = categories;
+    }
+    
+    public String getImgsrc() {
+        return imgsrc;
+    }
+    
+    public void setImgsrc(String imgsrc) {
+        this.imgsrc = imgsrc;
     }
     
     @Override
     public String toString() {
-        return "Book{" + "bookID='" + bookID + '\'' + ", title='" + title + '\'' + ", authors=" + Arrays.toString(authors) + ", description='" + description + '\'' + ", bookPrice=" + bookPrice + '}';
+        return "Book{" + "bookID='" + bookID + '\'' + ", title='" + title + '\'' + ", authors=" + Arrays.toString(authors) + ", description='" + description + '\'' + ", bookPrice=" + bookPrice + ", categories=" + Arrays.toString(categories) + ", imgsrc='" + imgsrc + '\'' + '}';
     }
 }

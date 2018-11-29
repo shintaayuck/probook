@@ -26,7 +26,7 @@ class SearchController extends BaseController
         ];
 
         if($this->request->get("query") === NULL) {
-            View::render("search", $vars);
+            View::render("search_angular", $vars);
         } else {
             $query = $this->request->get("query");
 
@@ -34,12 +34,12 @@ class SearchController extends BaseController
             $model = new BookModel();
 //            var_dump($this->searchByQuery($query));
 //            $vars["result"] = $this->searchByQuery($query);
-            var_dump($this->searchByQuery($query));
-            var_dump($model->searchByKeyword($query));
+//            var_dump($this->searchByQuery($query));
+//            var_dump($model->searchByKeyword($query));
             $vars["result"] = $model->searchByKeyword($query);
 
 
-            View::render("result", $vars);
+            View::render("search_angular", $vars);
         }
 
     }
