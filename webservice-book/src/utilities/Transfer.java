@@ -5,7 +5,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.commons.logging.LogFactory;
 import org.apache.http.util.EntityUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;

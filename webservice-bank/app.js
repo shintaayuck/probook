@@ -77,7 +77,7 @@ app.post("/api/transfer", function(req,res) {
           var val = [amount, card_no_sender];
           con.query(sql, val, function(err, result){
             if (err) res.status(500).send({"message": "Error updating sender balance", "code" : 3});
-            console.log("1 record updated");
+            console.log("1 record updated");                              
           })
           var sql = 'UPDATE customer SET balance = balance + ? WHERE cardnumber = ?';
           var val = [amount, card_no_receiver];
@@ -91,14 +91,14 @@ app.post("/api/transfer", function(req,res) {
             if (err) res.status(500).send({"message": "Error inserting transaction to DB", "code" : 3});
             console.log("1 record inserted")
           })
-          res.status(200).send({"message": "Transaction success", "code" : 0});
+          res.status(200).send({"message": "Transaction success", "code" : 1});
         }
       } else {
         res.status(404).send({"message": "Not found", "code" : 4});
       }
     })
   } else {
-    res.status(400).send({"message": "Bad request", "code" : 1});
+    res.status(400).send({"message": "Bad request", "code" : 5});
   }
 });
 
