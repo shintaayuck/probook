@@ -21,7 +21,6 @@ class BookController extends BaseController
         $client = new SoapClient('http://localhost:5000/api/books?wsdl');
         $param = array("arg0"=>$this->request->param("id"));
         $result = $client->getBook($param)->return;
-        var_dump($result);
 
         $book["name"] = $result->title;
         $book["author"] = $result->authors;
@@ -30,19 +29,8 @@ class BookController extends BaseController
         $book["rating"] = 4;
         $book["price"] = $result->bookPrice;
 
-//         var_dump($book);
-
-//        $model->setId($this->request->param("id"));
-//        $model->setName($result->name);
-//        $model->setDescription($result->description);
-//        $model->setImgsrc($result->imgsrc);
-
-//        $model->load();
-//
         $vars["book"] = $book;
         $vars["review"] = $model->getBookReviews();
-
-//         var_dump($vars);
 
         View::render("detail", $vars);
     }

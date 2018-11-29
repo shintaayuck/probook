@@ -1,58 +1,60 @@
 #result {
-  margin: 2em;
+    margin: 4em;
 }
 
 #result-head {
-  align-items: baseline;
-  width: 100%;
+    align-items: baseline;
+    width: 100%;
 }
 
 #result-head-title {
-  color: #f26600;
-  flex-grow: 1;
-  font-size: 1.5em;
+    color: #f26600;
+    flex-grow: 1;
+    font-size: 1.5em;
 }
 
 #result-head-desc {
-  flex-grow: 1;
-  text-align: right;
+    flex-grow: 1;
+    text-align: right;
 }
 
 #result-head-desc span {
-  font-weight: bold;
-  text-decoration: underline;
+    font-weight: bold;
+text-decoration: underline;
 }
 
 .result-item {
-  width: 100%;
-  margin-bottom: 1em;
+    width: 100%;
+    margin-bottom: 1em;
+    border-bottom: #13364a 0.2em;
+
 }
 
 .result-item-top {
-  width: 100%;
-  margin-bottom: 1em;
+    width: 100%;
+    margin-bottom: 1em;
 }
 
 .result-item-image {
-  object-fit: scale-down;
-  height: 8em;
-  width: 8em;
-  border: 2px solid black;
-  margin-right: 1em;
+    object-fit: scale-down;
+    height: 8em;
+    width: 8em;
+    border: 2px solid black;
+    margin-right: 1em;
 }
 
 .result-item-desc {
-  flex-basis: 0;
-  flex-grow: 5;
-  flex-shrink: 5;
+    flex-basis: 0;
+    flex-grow: 5;
+    flex-shrink: 5;
 }
 
 .result-item-button {
-  display: flex;
+    display: flex;
 }
 
 .result-item a {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .button {

@@ -54,7 +54,10 @@ class LoginController extends BaseController
             "success" => "Successfully Login"
         ]);
 
+//        $session->start();
         View::redirect("/search");
+
 
     }
 }
+?>

@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93a5c28a-cd81-4b41-abf3-1c353c699171" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/tugasbesar2_2018.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tugasbesar2_2018.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/probook/controller/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/probook/controller/BookController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/probook/controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/probook/controller/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/probook/controller/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/probook/controller/SearchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/probook/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/probook/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/probook/static/result.css" beforeDir="false" afterPath="$PROJECT_DIR$/probook/static/result.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/probook/static/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/probook/static/search.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/probook/static/search_angular.js" beforeDir="false" afterPath="$PROJECT_DIR$/probook/static/search_angular.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/probook/view/detail.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/probook/view/detail.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/probook/view/search_angular.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/probook/view/search_angular.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webservice-book/out/production/webservice-book/utilities/Transfer.class" beforeDir="false" afterPath="$PROJECT_DIR$/webservice-book/out/production/webservice-book/utilities/Transfer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webservice-book/src/utilities/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/webservice-book/src/utilities/Transfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webservice-book/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webservice-book/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webservice-book/out/production/webservice-book/services/BuyBookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/webservice-book/out/production/webservice-book/services/BuyBookServiceImpl.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,101 +31,91 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="js" value="1" />
-          <entry key="php" value="6" />
-          <entry key="phtml" value="4" />
+          <entry key="css" value="3" />
+          <entry key="js" value="5" />
+          <entry key="php" value="25" />
+          <entry key="phtml" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="10" />
+          <entry key="CSS" value="3" />
+          <entry key="JavaScript" value="5" />
+          <entry key="PHP" value="31" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="331" />
-          <entry key="php" value="430" />
-          <entry key="phtml" value="175" />
+          <entry key="css" value="164" />
+          <entry key="js" value="631" />
+          <entry key="php" value="489" />
+          <entry key="phtml" value="401" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="331" />
-          <entry key="PHP" value="605" />
+          <entry key="CSS" value="164" />
+          <entry key="JavaScript" value="632" />
+          <entry key="PHP" value="889" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/probook/view/search_angular.phtml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2">
-                  <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/probook/static/search_angular.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="154">
-                  <caret line="30" column="63" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="63" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/probook/view/detail.phtml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-637" />
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/probook/controller/BookController.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="313">
-                  <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/probook/index.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="294">
-                  <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/probook/view/detail.phtml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="176">
-                  <caret line="36" column="14" lean-forward="true" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/probook/view/search_angular.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="71" column="100" selection-start-line="71" selection-start-column="100" selection-end-line="71" selection-end-column="100" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/probook/controller/BookController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/probook/controller/SearchController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/probook/static/search_angular.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="58" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/probook/static/search.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="584">
+              <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>bookid</find>
       <find>probook.</find>
       <find>probook</find>
+      <find>start</find>
     </findStrings>
     <replaceStrings>
       <replace>$scope.</replace>
@@ -145,12 +135,17 @@
         <option value="$PROJECT_DIR$/webservice-book/src/services/BookServiceImpl.java" />
         <option value="$PROJECT_DIR$/webservice-book/src/services/RecommenderServiceImpl.java" />
         <option value="$PROJECT_DIR$/webservice-book/src/services/SOAPPublisher.java" />
-        <option value="$PROJECT_DIR$/probook/controller/SearchController.php" />
         <option value="$PROJECT_DIR$/probook/index.php" />
-        <option value="$PROJECT_DIR$/probook/view/search_angular.phtml" />
-        <option value="$PROJECT_DIR$/probook/static/search_angular.js" />
         <option value="$PROJECT_DIR$/probook/view/detail.phtml" />
+        <option value="$PROJECT_DIR$/probook/controller/SearchController.php" />
+        <option value="$PROJECT_DIR$/probook/static/result.css" />
+        <option value="$PROJECT_DIR$/probook/controller/LogoutController.php" />
+        <option value="$PROJECT_DIR$/probook/controller/LoginController.php" />
+        <option value="$PROJECT_DIR$/probook/core/Session.php" />
+        <option value="$PROJECT_DIR$/probook/static/search.css" />
         <option value="$PROJECT_DIR$/probook/controller/BookController.php" />
+        <option value="$PROJECT_DIR$/probook/static/search_angular.js" />
+        <option value="$PROJECT_DIR$/probook/view/search_angular.phtml" />
       </list>
     </option>
   </component>
@@ -203,6 +198,24 @@
               <item name="tugasbesar2_2018" type="462c0819:PsiDirectoryNode" />
               <item name="probook" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tugasbesar2_2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tugasbesar2_2018" type="462c0819:PsiDirectoryNode" />
+              <item name="probook" type="462c0819:PsiDirectoryNode" />
+              <item name="middleware" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tugasbesar2_2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tugasbesar2_2018" type="462c0819:PsiDirectoryNode" />
+              <item name="probook" type="462c0819:PsiDirectoryNode" />
+              <item name="migration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tugasbesar2_2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tugasbesar2_2018" type="462c0819:PsiDirectoryNode" />
+              <item name="probook" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tugasbesar2_2018" type="b2602c69:ProjectViewProjectNode" />
@@ -295,12 +308,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1542900830939</updated>
-      <workItem from="1543461844241" duration="5770000" />
+      <workItem from="1543461844241" duration="15472000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6049000" />
+    <option name="totallyTimeSpent" value="15751000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="790" extended-state="6" />
@@ -313,27 +326,27 @@
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32934132" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49928468" visible="true" weight="0.12034384" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007153" side_tool="true" visible="true" weight="0.12034384" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24963397" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="2" />
+      <window_info anchor="bottom" id="Find" order="3" />
+      <window_info anchor="bottom" id="Run" order="4" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32934132" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49928468" visible="true" weight="0.22063038" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007153" side_tool="true" weight="0.42550144" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.24963397" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
@@ -343,8 +356,8 @@
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" />
       <window_info anchor="bottom" id="Run" order="4" />
@@ -353,8 +366,8 @@
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32934132" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.24928367" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49928468" weight="0.22063038" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007153" side_tool="true" weight="0.42550144" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -401,14 +414,6 @@
     <entry file="file://$PROJECT_DIR$/probook/controller/HistoryController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-280" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/probook/model/ReviewModel.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/probook/model/OrderModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-853" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webservice-book/src/utilities/HTTPRequest.java">
@@ -475,13 +480,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/probook/model/BookModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webservice-book/webservice-book.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -492,53 +490,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/probook/view/search_angular.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/probook/controller/BaseController.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/probook/controller/SearchController.php">
+    <entry file="file://$PROJECT_DIR$/probook/view/detail.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="39" column="66" lean-forward="true" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
+        <state relative-caret-position="-714">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/probook/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="450">
           <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/probook/static/search_angular.js">
+    <entry file="file://$PROJECT_DIR$/probook/static/result.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="30" column="63" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="63" />
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/controller/LogoutController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/core/View.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/model/UserModel.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/core/Session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/probook/model/BaseModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
+        <state relative-caret-position="480">
           <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/probook/view/detail.phtml">
+    <entry file="file://$PROJECT_DIR$/probook/model/BookModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-637" />
+        <state relative-caret-position="120">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/model/OrderModel.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/model/ReviewModel.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/core/Router.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/controller/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="45" column="52" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
+          <folding>
+            <element signature="e#6#129#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/model/SessionModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-465" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/static/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/static/search.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/controller/SearchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/probook/controller/BookController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        <state relative-caret-position="495">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/static/search_angular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="58" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/probook/view/search_angular.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="71" column="100" selection-start-line="71" selection-start-column="100" selection-end-line="71" selection-end-column="100" />
         </state>
       </provider>
     </entry>
