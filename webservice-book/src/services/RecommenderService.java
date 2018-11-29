@@ -17,5 +17,5 @@ public interface RecommenderService {
      * @return Book
      */
     @WebMethod
-    public Book[] getRecommendedBook(String[] categories, String bookID);
+    public Book getRecommendedBook(String[] categories, String bookID);
 }
