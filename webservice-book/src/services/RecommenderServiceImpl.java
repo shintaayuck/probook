@@ -17,6 +17,7 @@ import static utilities.ConnectionMySQL.getConnection;
 
 @WebService
 public class RecommenderServiceImpl implements RecommenderService {
+    /*
     protected ArrayList<String> getCategories(String bookID){
         try {
             // Create categories array
@@ -36,8 +37,9 @@ public class RecommenderServiceImpl implements RecommenderService {
             return null;
         }
     }
+    */
 
-    protected ArrayList<Book> getRecommendFromDatabase(ArrayList<String> categories, String bookID){
+    protected ArrayList<Book> getRecommendFromDatabase(String[] categories, String bookID){
         ArrayList<Book> results = new ArrayList<Book>();
         try {
             BookServiceImpl bookservice = new BookServiceImpl();
@@ -46,6 +48,7 @@ public class RecommenderServiceImpl implements RecommenderService {
             for (String category : categories) {
                 System.out.println(category);
                 String queryGetBookID = "SELECT bookid FROM books NATURAL JOIN (SELECT bookid FROM book_category WHERE category = \""+ category +"\") AS res WHERE bookid <> \"" + bookID + "\" ORDER BY boughtqty DESC LIMIT 1;";
+                System.out.println(queryGetBookID);
                 Statement p = con.createStatement();
                 ResultSet resultSetBookID = p.executeQuery(queryGetBookID);
                 while (resultSetBookID.next()){
@@ -66,12 +69,12 @@ public class RecommenderServiceImpl implements RecommenderService {
         }
     }
 
-    protected ArrayList<Book> getRecommendFromRandom(ArrayList<String> categories) {
+    protected ArrayList<Book> getRecommendFromRandom(String[] categories) {
         BookServiceImpl bookservice = new BookServiceImpl();
         ArrayList<Book> results = new ArrayList<Book>();
         Random rand = new Random();
-        int i = rand.nextInt(categories.size());
-        GoogleBookAPI googleBookAPI = new GoogleBookAPI("subject:" + categories.get(i));
+        int i = rand.nextInt(categories.length);
+        GoogleBookAPI googleBookAPI = new GoogleBookAPI("subject:" + categories[i]);
         JSONObject semiResult = googleBookAPI.searchBook();
         try {
             JSONArray arrayResult = new JSONArray(semiResult.get("items").toString());
@@ -79,42 +82,50 @@ public class RecommenderServiceImpl implements RecommenderService {
             JSONObject resjson = new JSONObject(arrayResult.get(j).toString());
             JsonToBook translator = new JsonToBook();
             Book book = translator.translateToBook(resjson);
-            book.setBookPrice(bookservice.getPrice(book.getBookID()));
-            results.add(book);
-            return results;
-        } catch (JSONException err) {
+            if (book != null){
+                book.setBookPrice(bookservice.getPrice(book.getBookID()));
+                results.add(book);
+                return results;
+            }
+            System.out.println("No book from google books api");
+            return null;
+        } catch (JSONException | NullPointerException err) {
             System.out.println(err);
             return null;
         }
     }
 
     @Override
-    public Book[] getRecommendedBook(String bookID){
+    public Book[] getRecommendedBook(String[] categories, String bookID){
         // Initialize categories from bookID, results container and bookservice
         ArrayList<Book> results = new ArrayList<Book>();
+        /*
         ArrayList<String> categories = getCategories(bookID);
         if (categories == null){
             return null;
         }
         else {
-            // Check the books from database
-            results = getRecommendFromDatabase(categories, bookID);
-            // If there is no result from database, get one random books from googlebookapi
-            if (results.isEmpty() || results == null) {
-                results = getRecommendFromRandom(categories);
-                if (results.isEmpty() || results == null){
-                    System.out.println("Not found in google books api");
-                }
-            }
-
-            // ArrayList of Result to Array of Book
-            Book[] arrResult = new Book[results.size()];
-            for (int k = 0 ; k < arrResult.length ; k++){
-                Book bookelmt = results.get(k);
-                System.out.println(bookelmt.getTitle());
-                arrResult[k] = bookelmt;
-            }
-            return arrResult;
+        */
+        // Check the books from database
+        results = getRecommendFromDatabase(categories, bookID);
+        // If there is no result from database, get one random books from googlebookapi
+        if (results.isEmpty() || results == null) {
+            results = getRecommendFromRandom(categories);
         }
+
+        // ArrayList of Result to Array of Book
+        if (results == null) {
+            System.out.println("null");
+            return null;
+        }
+
+        Book[] arrResult = new Book[results.size()];
+        for (int k = 0 ; k < arrResult.length ; k++){
+            Book bookelmt = results.get(k);
+            System.out.println(bookelmt.getTitle());
+            arrResult[k] = bookelmt;
+        }
+        return arrResult;
+        //}
     }
 }
