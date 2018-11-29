@@ -41,6 +41,7 @@ class BookController extends BaseController
 //
         $vars["book"] = $book;
         $vars["review"] = $model->getBookReviews();
+        $vars["recommend"] = $model->getRecommenderBooks($result->categories, $this->request->param("id"));
 
 //         var_dump($vars);
 

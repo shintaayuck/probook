@@ -64,6 +64,20 @@ class BookModel extends BaseModel {
         return $result;
     }
 
+    public function getBookRecommendations($categories, $id){
+        $client = new SoapClient('http://localhost:5000/api/recommender?wsdl');
+        $param = array("arg0"=>$categories, "arg1"->$id);
+        $result = $client->getRecommendedBook($param)->return;
+        var_dump($result);
+        $recommend["name"] = $result->title;
+        $recommend["author"] = $result->authors;
+        $recommend["description"] = $result->description;
+        $recommend["imgsrc"] = $result->imgsrc;
+        $recommend["rating"] = 4;
+        $recommend["price"] = $result->bookPrice;
+        return $recommend;
+    }
+
     /**
      * @return mixed
      */
