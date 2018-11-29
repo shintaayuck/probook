@@ -72,7 +72,7 @@ class Session
 
             $this->session->setSessionId($sessionId);
             $this->session->setUserId($userId);
-            $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+1 minutes")));
+            $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+10 minutes")));
             $this->session->setBrowser($browsername);
             $this->session->setIp($ip);
 
@@ -83,6 +83,7 @@ class Session
         } else {
             $this->session->loadByUserID($userId);
             if (($this->session->getBrowser() == $browsername) and ($this->session->getIp() == $ip)){
+                $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+10 minutes")));
                 setcookie("session", $this->session->getSessionId());
                 setcookie("username", $username); 
             }
@@ -90,7 +91,7 @@ class Session
                 session_start();
                 $this->session->setSessionId($sessionId);
                 $this->session->setUserId($userId);
-                $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+1 minutes")));
+                $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+10 minutes")));
                 $this->session->setBrowser($browsername);
                 $this->session->setIp($ip);
 
