@@ -10,8 +10,11 @@ angular.module('searchApp', [])
             url = "http://localhost:8000/result/" + valtosend;
             $http.get(url)
                 .then(function (response) {
-                    $scope.result = response.data;
-                    if (!$scope.result) {
+                    if (response.data=="404 Not Found") {
+                        var message = document.getElementById('search-no-result');
+                        message.style.display = 'block';
+                    } else {
+                        $scope.result = response.data;
                         var message = document.getElementById('search-no-result');
                         message.style.display = 'none';
                     }
