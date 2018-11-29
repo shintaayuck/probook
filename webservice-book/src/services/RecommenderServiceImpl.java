@@ -46,7 +46,7 @@ public class RecommenderServiceImpl implements RecommenderService {
             }
             closeConnection(con);
             return result;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException | NullPointerException e) {
             e.printStackTrace();
             return null;
         }
@@ -95,6 +95,35 @@ public class RecommenderServiceImpl implements RecommenderService {
             return null;
         }
     }
+    protected Book getRecommendRandom(String[] categories) {
+        try {
+            System.out.println("Masuk recommend from randomn other");
+            BookServiceImpl bookservice = new BookServiceImpl();
+            Book result = new Book();
+            Random rand = new Random();
+            int i = rand.nextInt(categories.length);
+            String cat = categories[i];
+            cat = cat.replace("'", "%27");
+            cat = cat.replace("(", "%28");
+            cat = cat.replace(")", "%29");
+            cat = cat.replace(",", "%2C");
+            cat = cat.replace(" ", "%20");
+            System.out.println(cat);
+            GoogleBookAPI googleBookAPI = new GoogleBookAPI("categories:" + cat);
+            JSONObject semiResult = googleBookAPI.searchBook();
+            JSONArray arrayResult = new JSONArray(semiResult.get("items").toString());
+            int j = rand.nextInt(arrayResult.length());
+            JSONObject resjson = new JSONObject(arrayResult.get(j).toString());
+            JsonToBook translator = new JsonToBook();
+            result = translator.translateToBook(resjson);
+            result.setBookPrice(bookservice.getPrice(result.getBookID()));
+            System.out.println("Get book from google books api");
+            return result;
+        } catch (JSONException | NullPointerException err) {
+            System.out.println(err);
+            return null;
+        }
+    }
 
     @Override
     public Book getRecommendedBook(String[] categories, String bookID){
@@ -105,7 +134,7 @@ public class RecommenderServiceImpl implements RecommenderService {
         // If there is no result from database, get one random books from googlebookapi
         String book_id = result.getBookID();
         if (book_id == null) {
-            result = getRecommendFromRandom(categories);
+            result = getRecommendRandom(categories);
         }
         return result;
     }
