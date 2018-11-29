@@ -54,7 +54,7 @@ public class RecommenderServiceImpl implements RecommenderService {
                 }
             }
             Statement p = con.createStatement();
-            String queryGetBookID = "SELECT bookid FROM books NATURAL JOIN (SELECT bookid FROM book_category WHERE" + queryCategory + ") AS res WHERE bookid <> \"" + bookID + "\" ORDER BY boughtqty DESC LIMIT 1;";
+            String queryGetBookID = "SELECT bookid FROM books NATURAL JOIN (SELECT bookid FROM book_category WHERE" + queryCategory + ") AS res WHERE bookid <> \"" + bookID + "\" AND boughtqty <> 0 ORDER BY boughtqty DESC LIMIT 1;";
             System.out.println(queryGetBookID);
             ResultSet resultSet = p.executeQuery(queryGetBookID);
             if (resultSet.next()){
