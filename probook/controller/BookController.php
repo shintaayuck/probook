@@ -29,9 +29,21 @@ class BookController extends BaseController
         $book["rating"] = 4;
         $book["price"] = $result->bookPrice;
 
+        $client_recomm = new SoapClient('http://localhost:5000/api/recommender?wsdl');
+        $param = array("arg0"=>$categories, "arg1"->$id);
+        $result_recomm = $client_recomm->getRecommendedBook($param)->return;
+        var_dump($result_recomm);
+        $recommend["name"] = $result_recomm->title;
+        $recommend["author"] = $result_recomm->authors;
+        $recommend["description"] = $result_recomm->description;
+        $recommend["imgsrc"] = $result_recomm->imgsrc;
+        $recommend["rating"] = 4;
+        $recommend["price"] = $result_recomm->bookPrice;
+        return $recommend;
+
         $vars["book"] = $book;
         $vars["review"] = $model->getBookReviews();
-        $vars["recommend"] = $model->getRecommenderBooks($result->categories, $this->request->param("id"));
+        $vars["recommend"] = $recommend;
 
         View::render("detail", $vars);
     }
