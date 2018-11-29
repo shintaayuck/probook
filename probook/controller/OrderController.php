@@ -4,6 +4,7 @@ require_once "BaseController.php";
 require_once "core/View.php";
 require_once "core/Session.php";
 require_once "model/OrderModel.php";
+require_once "model/UserModel.php";
 
 class OrderController extends BaseController
 {
@@ -19,6 +20,20 @@ class OrderController extends BaseController
 
         $session = new Session();
         $user_id = (int)$session->inSession();
+
+        $client = new SoapClient('http://localhost:5000/api/buy-books?wsdl');
+        $param = array("arg0"=>$book_id, "arg1"=>$order_count, "arg2"=>$model->getCardnumber());
+//        var_dump(json_encode($client->searchBook($param)->return));
+        $result = json_decode(json_encode($client->buyBook($param)->return));
+
+        if ($result) {
+            if ()
+        } else {
+            header('Content-Type: application/json');
+            echo json_encode(['status' => 'err', 'order_id' => NULL;
+        }
+
+
 
         $order = new OrderModel();
         $order->setAmount($order_count);

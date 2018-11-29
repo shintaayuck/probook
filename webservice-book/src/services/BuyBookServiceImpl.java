@@ -54,12 +54,12 @@ public class BuyBookServiceImpl implements BuyBookService {
         Integer price = getPrice(bookID);
         Integer amount = bookAmount * price;
         Transfer transfer = new Transfer(senderCardNumber, receiverCardNumber, amount);
-        JSONObject hasilJSON = transfer.transferToBuy();
         try {
+            JSONObject hasilJSON = transfer.transferToBuy();
             String strcode = hasilJSON.get("code").toString();
             Integer code = Integer.parseInt(strcode);
             BuyStatus resultStatus = new BuyStatus(code);
-            if (code == 0){
+            if (code == 1){
                 String queryUpdateBook = "UPDATE books SET boughtqty = boughtqty + (?) WHERE bookid = (?);";
                 Connection con = getConnection();
                 PreparedStatement pupdate = con.prepareStatement(queryUpdateBook);
