@@ -24,6 +24,7 @@ class LoginController extends BaseController
         View::render("Login", []);
     }
 
+    /*
     public function googleAuth()
     {
         $password = $this->request->post("id");
@@ -49,7 +50,7 @@ class LoginController extends BaseController
         View::redirect("/search");
 
     }
-
+    */
 
     public function login()
     {
