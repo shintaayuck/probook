@@ -21,51 +21,41 @@ public class RecommenderServiceImpl implements RecommenderService {
         try {
             // Create categories array
             ArrayList<String> categories = new ArrayList<String>();
-            String queryGetCategory = "SELECT category FROM book_category WHERE bookid = (?);";
+            String queryGetCategory = "SELECT category FROM book_category WHERE bookid = \""+ bookID +"\";";
             Connection con = getConnection();
-
-            PreparedStatement pc = con.prepareStatement(queryGetCategory);
-            pc.setString(1, bookID);
-
-            // SALAH DISINI COYYYYYY
-            boolean hasResults = pc.execute();
-            while (hasResults) {
-                System.out.println("Masih ada hasil");
-                ResultSet resultSetCategory = pc.getResultSet();
+            Statement pc = con.createStatement();
+            ResultSet resultSetCategory = pc.executeQuery(queryGetCategory);
+            while (resultSetCategory.next()) {
                 String category = resultSetCategory.getString("category");
-                System.out.println(category);
                 categories.add(category);
-                hasResults = pc.getMoreResults();
             }
-            System.out.println("Categories' size");
-            System.out.println(categories.size());
-
             closeConnection(con);
             return categories;
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Gabisa konek SQL");
             e.printStackTrace();
             return null;
         }
     }
 
-    protected ArrayList<Book> getRecommendFromDatabase(ArrayList<String> categories){
+    protected ArrayList<Book> getRecommendFromDatabase(ArrayList<String> categories, String bookID){
         ArrayList<Book> results = new ArrayList<Book>();
         try {
             BookServiceImpl bookservice = new BookServiceImpl();
             // Get books from database
-            String queryGetBookID = "SELECT bookid FROM books NATURAL JOIN (SELECT bookid FROM book_category WHERE category = (?)) AS res WHERE boughtqty = (SELECT MAX(boughtqty) FROM books NATURAL JOIN book_category WHERE category = (?) AND boughtqty <> 0);";
             Connection con = getConnection();
             for (String category : categories) {
-                PreparedStatement p = con.prepareStatement(queryGetBookID);
-                p.setString(1, category);
-                p.setString(2, category);
-                ResultSet resultSet = p.executeQuery();
-
-                String idres = resultSet.getString("bookid");
-                Book bookres = bookservice.getBook(idres);
-                if (bookres != null){
-                    results.add(bookres);
+                System.out.println(category);
+                String queryGetBookID = "SELECT bookid FROM books NATURAL JOIN (SELECT bookid FROM book_category WHERE category = \""+ category +"\") AS res WHERE bookid <> \"" + bookID + "\" ORDER BY boughtqty DESC LIMIT 1;";
+                Statement p = con.createStatement();
+                ResultSet resultSetBookID = p.executeQuery(queryGetBookID);
+                while (resultSetBookID.next()){
+                    String idres = resultSetBookID.getString("bookid");
+                    Book bookres = bookservice.getBook(idres);
+                    if (bookres != null){
+                        results.add(bookres);
+                    } else {
+                        System.out.println("No book fetch");
+                    }
                 }
             }
             closeConnection(con);
@@ -100,8 +90,6 @@ public class RecommenderServiceImpl implements RecommenderService {
 
     @Override
     public Book[] getRecommendedBook(String bookID){
-        System.out.println("Book ID");
-        System.out.println(bookID);
         // Initialize categories from bookID, results container and bookservice
         ArrayList<Book> results = new ArrayList<Book>();
         ArrayList<String> categories = getCategories(bookID);
@@ -109,16 +97,12 @@ public class RecommenderServiceImpl implements RecommenderService {
             return null;
         }
         else {
-            System.out.println("Categories");
-            System.out.println(categories.size());
             // Check the books from database
-            results = getRecommendFromDatabase(categories);
-
+            results = getRecommendFromDatabase(categories, bookID);
             // If there is no result from database, get one random books from googlebookapi
-            if (results == null) {
-                System.out.println("Not found in database");
+            if (results.isEmpty() || results == null) {
                 results = getRecommendFromRandom(categories);
-                if (results == null){
+                if (results.isEmpty() || results == null){
                     System.out.println("Not found in google books api");
                 }
             }
