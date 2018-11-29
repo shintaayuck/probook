@@ -8,6 +8,8 @@ import utilities.GoogleBookAPI;
 import utilities.JsonToBook;
 
 import javax.jws.WebService;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Random;
 import java.sql.*;
@@ -17,28 +19,6 @@ import static utilities.ConnectionMySQL.getConnection;
 
 @WebService
 public class RecommenderServiceImpl implements RecommenderService {
-    /*
-    protected ArrayList<String> getCategories(String bookID){
-        try {
-            // Create categories array
-            ArrayList<String> categories = new ArrayList<String>();
-            String queryGetCategory = "SELECT category FROM book_category WHERE bookid = \""+ bookID +"\";";
-            Connection con = getConnection();
-            Statement pc = con.createStatement();
-            ResultSet resultSetCategory = pc.executeQuery(queryGetCategory);
-            while (resultSetCategory.next()) {
-                String category = resultSetCategory.getString("category");
-                categories.add(category);
-            }
-            closeConnection(con);
-            return categories;
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    */
-
     protected Book getRecommendFromDatabase(String[] categories, String bookID){
         try {
             Book result = new Book();
@@ -61,6 +41,8 @@ public class RecommenderServiceImpl implements RecommenderService {
                 String idres = resultSet.getString("bookid");
                 System.out.println(idres);
                 result = bookservice.getBook(idres);
+                System.out.println("Hasil");
+                System.out.println(result);
             }
             closeConnection(con);
             return result;
@@ -71,20 +53,39 @@ public class RecommenderServiceImpl implements RecommenderService {
     }
 
     protected Book getRecommendFromRandom(String[] categories) {
-        BookServiceImpl bookservice = new BookServiceImpl();
-        Book result = new Book();
-        Random rand = new Random();
-        int i = rand.nextInt(categories.length);
-        GoogleBookAPI googleBookAPI = new GoogleBookAPI("subject:" + categories[i]);
-        JSONObject semiResult = googleBookAPI.searchBook();
         try {
+            System.out.println("Masuk recommend from random");
+            BookServiceImpl bookservice = new BookServiceImpl();
+            Book result = new Book();
+            Random rand = new Random();
+            int i = rand.nextInt(categories.length);
+            String cat = categories[i];
+            cat = cat.replace("'", "%27");
+            cat = cat.replace("(", "%28");
+            cat = cat.replace(")", "%29");
+            cat = cat.replace(",", "%2C");
+            cat = cat.replace(" ", "%20");
+            System.out.println(cat);
+            GoogleBookAPI googleBookAPI = new GoogleBookAPI("categories:" + cat);
+            JSONObject semiResult = googleBookAPI.searchBook();
             JSONArray arrayResult = new JSONArray(semiResult.get("items").toString());
-            int j = rand.nextInt(arrayResult.length());
-            JSONObject resjson = new JSONObject(arrayResult.get(j).toString());
-            JsonToBook translator = new JsonToBook();
-            result = translator.translateToBook(resjson);
-            if (result != null){
+            boolean found = false;
+            int j = 0;
+            while (!(found)){
+                JSONObject resjson = new JSONObject(arrayResult.get(j).toString());
+                JsonToBook translator = new JsonToBook();
+                result = translator.translateToBook(resjson);
+                String[] res_cat = result.getCategories();
+                for (int k = 0; k < res_cat.length ; k ++){
+                    if (res_cat[k] == categories[i]) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (found){
                 result.setBookPrice(bookservice.getPrice(result.getBookID()));
+                System.out.println("Get book from google books api");
                 return result;
             }
             System.out.println("No book from google books api");
@@ -99,23 +100,12 @@ public class RecommenderServiceImpl implements RecommenderService {
     public Book getRecommendedBook(String[] categories, String bookID){
         // Initialize categories from bookID, results container and bookservice
         Book result = new Book();
-        /*
-        ArrayList<String> categories = getCategories(bookID);
-        if (categories == null){
-            return null;
-        }
-        else {
-        */
         // Check the books from database
         result = getRecommendFromDatabase(categories, bookID);
         // If there is no result from database, get one random books from googlebookapi
-        if (result == null) {
+        String book_id = result.getBookID();
+        if (book_id == null) {
             result = getRecommendFromRandom(categories);
-        }
-
-        if (result == null) {
-            System.out.println("null");
-            return null;
         }
         return result;
     }
