@@ -30,16 +30,16 @@ class BookController extends BaseController
         $book["price"] = $result->bookPrice;
 
         $client_recomm = new SoapClient('http://localhost:5000/api/recommender?wsdl');
-        $param = array("arg0"=>$categories, "arg1"->$id);
+        $param = array("arg0"=>$result->categories, "arg1"=>$result->bookID);
         $result_recomm = $client_recomm->getRecommendedBook($param)->return;
-        var_dump($result_recomm);
+        var_dump($result->categories);
+        var_dump($result_recomm->categories);
         $recommend["name"] = $result_recomm->title;
         $recommend["author"] = $result_recomm->authors;
         $recommend["description"] = $result_recomm->description;
         $recommend["imgsrc"] = $result_recomm->imgsrc;
         $recommend["rating"] = 4;
         $recommend["price"] = $result_recomm->bookPrice;
-        return $recommend;
 
         $vars["book"] = $book;
         $vars["review"] = $model->getBookReviews();
