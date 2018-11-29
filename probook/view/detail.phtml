@@ -73,12 +73,8 @@
         ?>
     </div>
     <div class="section-container">
-      <div class="title">Recommended Books</div>
-      <?php
-      foreach(array_reverse($recommend) as $book) {
-        View::render("recommend_item", $book);
-      }
-      ?>
+        <div class="title">Recommended Books</div>
+        <?php View::render("recommend_item", $book); ?>
     </div>      
 </body>
 
