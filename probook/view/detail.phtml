@@ -31,9 +31,14 @@
     <div class="description-container">
         <div class="description-text-container">
             <div id="book-name"><?php echo $book["name"] ?></div>
+            <?php if ($book["price"]>0) : ?>
+                <div id="book-detail-price"><?php echo "IDR".$book["price"]?></div>
+            <?php else : ?>
+                <div id="book-detail-not-for-sale">NOT FOR SALE</div>
+            <?php endif ?>
             <div id="writer-name"><?php echo $book["author"] ?></div>
             <div id="description-text"><?php echo $book["description"] ?></div>
-            <div id="book-detail-price"><?php echo $book["price"] ?></div>
+
         </div>
         <div class="photo-container">
             <img src="<?php echo $book['imgsrc'] ?>" alt="Cover" class="photo">
@@ -75,7 +80,7 @@
     <div class="section-container">
         <div class="title">Recommended Books</div>
         <?php View::render("recommend_item", $recommend); ?>
-    </div>      
+    </div>
 </body>
 
 </html>

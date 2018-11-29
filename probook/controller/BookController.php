@@ -23,7 +23,14 @@ class BookController extends BaseController
         $result = $client->getBook($param)->return;
 
         $book["name"] = $result->title;
-        $book["author"] = $result->authors;
+        if (sizeof($result->authors) > 1) {
+            $book["author"] = $result->authors[0];
+            for ($i=1; $i < sizeof($result->authors); $i++) {
+                $book["author"] .= ", " . $result->authors[$i];
+            }
+        } else {
+            $book["author"] = $result->authors;
+        }
         $book["description"] = $result->description;
         $book["imgsrc"] = $result->imgsrc;
         $book["rating"] = 4;
