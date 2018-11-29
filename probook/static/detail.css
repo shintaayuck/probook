@@ -81,6 +81,7 @@
   padding-right: 0.75em;
   padding-top: 0.75em;
   color: gray;
+  text-align: justify;
 }
 
 .photo-container {
@@ -219,3 +220,78 @@ ul {
 .rating-scale {
   text-align: center;
 }
+
+.recommend-item {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.recommend-item-top-container{
+  display: flex;
+}
+
+.recommend-item-top {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.recommend-item-image img{
+  object-fit: scale-down;
+  height: 8em;
+  width: 8em;
+  border: 2px solid black;
+  margin-right: 1em;
+}
+
+.recommend-item-desc {
+  flex-basis: 0;
+  flex-grow: 5;
+  flex-shrink: 5;
+  text-align: justify;
+  color: gray;
+}
+
+.recommend-item-button {
+  display: flex;
+}
+
+.recommend-item a {
+  margin-left: auto;
+}
+
+.button {
+  padding: 0.6em;
+  width: 8em;
+  background-color: #00aeef;
+  border: 0;
+  border-radius: 8px;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.recommend-item {
+  display: flex;
+  margin: 0.5em 0;
+}
+
+.recommend-item-title {
+  margin-bottom: 0.2em;
+}
+
+.recommend-item-title a {
+  color: #f26600;
+  font-size: 1.5em;
+  text-decoration: initial;
+}
+
+.recommend-item-title .title {
+  color: #f26600;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: initial;
+}
+
+.recommend-item-rating {
+  margin-bottom: 0.5em;
+}
+

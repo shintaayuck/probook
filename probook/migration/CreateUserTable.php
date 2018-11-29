@@ -15,6 +15,6 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $stmt = $conn->prepare("create table user (id int AUTO_INCREMENT, name varchar(50) not null, "
     . "username varchar(30) not null, email varchar(50) not null, password varchar(30) not null,"
     . "address text not null, phone varchar(30) not null, avatar varchar(30) not null, "
-    . "primary key (id))");
+    . "primary key (id), cardnumber bigint(16))");
 
 $stmt->execute();
