@@ -1,0 +1,25 @@
+<div class="result-item">
+  <div class="result-item-top container">
+    <img class="result-item-image " src="<?php echo $imgsrc; ?>">
+    <div class="result-item-desc">
+      <div class="result-item-title">
+        <a href="/book/<?php echo $id ?>">
+          <?php echo $name ?>
+        </a>
+      </div>
+      <div class="result-item-rating">
+        <?php echo $author ?> - <?php echo $rating; ?> / 5.0 (<?php echo $vote ?> Vote)
+      </div>
+      <div class="result-item-desc">
+        <?php echo $description ?>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div class="result-item-button">
+    <a href="/book/<?php //echo $id ?>">
+      <button class="button">Detail</button>
+    </a>
+  </div>
+  -->
+</div>
