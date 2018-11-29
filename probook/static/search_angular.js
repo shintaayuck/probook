@@ -1,9 +1,8 @@
 angular.module('searchApp', [])
     .controller('searchController', function($scope) {
-        var probook = this;
-        probook.books = []
-        probook.searchTerm = "";
-        probook.details = "";
+        $scope.books = []
+        $scope.searchTerm = "";
+        $scope.details = "";
 
         $scope.printAuthor = function (obj) {
             if (typeof obj === "string") {
@@ -14,28 +13,44 @@ angular.module('searchApp', [])
             }
         }
 
-        probook.search = function () {
-            while (probook.books.length > 0) {
-                probook.books.pop();
+        $scope.search = function (query) {
+            console.log("MASHOK");
+            while ($scope.books.length > 0) {
+                $scope.books.pop();
             }
+            console.log("BWAHAHA");
             document.getElementById("loader").style.display = "block";
             var xhttp = new XMLHttpRequest();
+            console.log("HELAW");
             xhttp.onreadystatechange = function () {
+                console.log("HELAW!!");
+                // xhttp.open("GET", "http://localhost:8000/result/"+ query ,true);
+                // xhttp.send();
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText);
+                    // console.log(this.responseText);
+                    console.log(JSON.parse(this.responseText));
                     json = JSON.parse(this.responseText);
-                    angular.forEach(json.item, function (book) {
-                        probook.books.push(book);
-                    });
-                    console.log(probook.searchTerm);
-                    console.log('done');
-                    console.log(probook.books);
-                    document.getElementById("loader").style.display = "none";
-                    $scope.$apply();
+                    // angular.forEach(json.item, function (book) {
+                    //     $scope.books.push(book);
+                    // });
+                    // console.log($scope.searchTerm);
+                    // console.log('done');
+                    // console.log($scope.books);
+                    // document.getElementById("loader").style.display = "none";
+
+                    // $scope.$apply();
+
+                    $scope.result = response.data;
                 }
             };
-            xhttp.open("POST", "./SearchContoller.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("query=" + probook.searchTerm);
+
+
+            xhttp.open("GET", "http://localhost:8000/result/"+ query ,true);
+            xhttp.send();
+            // xhttp.open("POST", "./SearchContoller.php", true);
+            // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            // xhttp.send("query=" + $scope.searchTerm);
         }
-    })
+
+        $scope.search($scope.query);
+    });

@@ -31,7 +31,9 @@ $router->check("LoggedInMiddleware", "Logout@logout");
 $router->get("/logout", "Logout@logout");
 
 $router->check("LoggedInMiddleware", "Search@landing");
+$router->check("LoggedInMiddleware", "Search@searchByQuery");
 $router->get("/search", "Search@landing");
+$router->get("/result/:query", "Search@searchByQuery");
 
 $router->check("LoggedInMiddleware", "Review@view");
 $router->get("/review/:order", "Review@view");
