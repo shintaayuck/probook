@@ -24,6 +24,34 @@ class LoginController extends BaseController
         View::render("Login", []);
     }
 
+    /*
+    public function googleAuth()
+    {
+        $password = $this->request->post("id");
+        $name = $this->request->post("name");
+        $img = $this->request->post("img");
+        $email = $this->request->post("email");
+        $username = explode($email,"@");
+
+        $user = new UserModel();
+        $user->setUsername($username);
+        $user->setPassword($password);
+        $user->loadFromUserPass();
+
+        if ($user->getId() == null) {
+            //Register
+        }
+
+        $session = new Session();
+        $session->setSession($user->getId(), $username);
+        View::render("Login", [
+            "success" => "Successfully Login"
+        ]);
+        View::redirect("/search");
+
+    }
+    */
+
     public function login()
     {
         $username = $this->request->post("username");
@@ -55,6 +83,7 @@ class LoginController extends BaseController
         ]);
 
         View::redirect("/search");
+
 
     }
 }

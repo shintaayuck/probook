@@ -20,61 +20,69 @@
     <script type="text/javascript" src="/static/search_angular.js"></script>
 </head>
 
-<body ng-app = "searchApp" ng-controller = "searchController as result">
+<body ng-app = "searchApp" ng-controller = "searchController">
     <?php require "view/header.phtml"; ?>
 <!--    Search Input Section-->
     <section>
-        <form id="book-search">
+        <form id="book-search" ng-submit="change(text)">
             <h1>Search Book</h1>
             <div>
-                <input class="book-search-field" name="query" type="text" ng-model="result.query" placeholder="Input search terms" >
+                <input class="book-search-field" name="query" type="text" ng-model="query" placeholder="Input search terms" >
             </div>
             <div>
-                <button class="book-search-field" id="book-search-submit" ng-click="search(result.query)" type="button">Search</button> <!--onclick="search()"-->
+                <button type="submit" class="book-search-field" id="book-search-submit">Search</button>
             </div>
         </form>
     </section>
     <div class='loader' style="display: none" id='loader'> </div>
 
 <!-- Search result-->
-    <section class="" id="search-results" ng-if="(result.books).length>0">
+    <section class="" id="search-results" ng-if="result.length < 11 && result.length > 0">
 
 <!--        Search result head-->
         <div class="container" id="result-head">
             <div id="result-head-title">
-                <h1>Search Results for "{{result.query}}"</h1>
+                <h1>Search Results for "{{query}}"</h1>
             </div>
             <div id="result-head-desc">
-                Found <span id="count">{{(result.books).length}}></span> result(s).
+                Found <span id="count">{{result.length}}</span> result(s).
             </div>
         </div>
 
 <!--        Search result items-->
-        <div ng-repeat="book in result.books" class="result-item">
+        <div ng-repeat="book in result" class="result-item">
             <div class="result-item-top container">
                 <img class="result-item-image " ng-src="{{book.imgsrc}}">
                 <div class="result-item-desc">
                     <div class="result-item-title">
-                        <a href="/book/{{book.bookid}}">
-                            {{book.name}}
+                        <a href="/book/{{book.bookID}}">
+                            {{book.title}}
                         </a>
                     </div>
+                    <div ng-if="book.bookPrice > 0" class="result-item-price">
+                        Price = {{book.bookPrice}}
+                    </div>
+                    <div ng-if="book.bookPrice <= 0" class="result-item-not-for-sale">
+                        NOT FOR SALE
+                    </div>
                     <div class="result-item-rating">
-                        {{book.authors}} - {{book.rating}} / 5.0 ({{book.vote}} Vote(s))
+                        {{book.authors.toString()}}
                     </div>
                     <div class="result-item-desc">
                         {{book.description}}
                     </div>
+
                 </div>
             </div>
             <div class="result-item-button">
-                <a href="/book{{book.bookid}}">
+                <a href="/book/{{book.bookID}}">
                     <button class="button">Detail</button>
                 </a>
             </div>
         </div>
 
     </section>
+    <section class="" id="search-no-result">No Result</section>
 
 </body>
 

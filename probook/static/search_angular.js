@@ -1,56 +1,25 @@
 angular.module('searchApp', [])
-    .controller('searchController', function($scope) {
-        $scope.books = []
-        $scope.searchTerm = "";
-        $scope.details = "";
+    .controller('searchController', function($scope, $http) {
+        // message.style.display = 'none';
+        $scope.query = null;
 
-        $scope.printAuthor = function (obj) {
-            if (typeof obj === "string") {
-                return obj;
-            } else {
-                return obj.join(", ");
-                ;
-            }
+        $scope.change = function () {
+            // showLoader()
+            $scope.result = null;
+            valtosend = $scope.query.replace(/\s+/g, '_');
+
+            url = "http://localhost:8000/result/" + valtosend;
+            $http.get(url)
+                .then(function (response) {
+                    if (response.data=="404 Not Found" || response.data=="null") {
+                        var message = document.getElementById('search-no-result');
+                        message.style.display = 'block';
+                    } else {
+                        $scope.result = response.data;
+                        var message = document.getElementById('search-no-result');
+                        message.style.display = 'none';
+                    }
+
+                });
         }
-
-        $scope.search = function (query) {
-            console.log("MASHOK");
-            while ($scope.books.length > 0) {
-                $scope.books.pop();
-            }
-            console.log("BWAHAHA");
-            document.getElementById("loader").style.display = "block";
-            var xhttp = new XMLHttpRequest();
-            console.log("HELAW");
-            xhttp.onreadystatechange = function () {
-                console.log("HELAW!!");
-                // xhttp.open("GET", "http://localhost:8000/result/"+ query ,true);
-                // xhttp.send();
-                if (this.readyState == 4 && this.status == 200) {
-                    // console.log(this.responseText);
-                    console.log(JSON.parse(this.responseText));
-                    json = JSON.parse(this.responseText);
-                    // angular.forEach(json.item, function (book) {
-                    //     $scope.books.push(book);
-                    // });
-                    // console.log($scope.searchTerm);
-                    // console.log('done');
-                    // console.log($scope.books);
-                    // document.getElementById("loader").style.display = "none";
-
-                    // $scope.$apply();
-
-                    $scope.result = response.data;
-                }
-            };
-
-
-            xhttp.open("GET", "http://localhost:8000/result/"+ query ,true);
-            xhttp.send();
-            // xhttp.open("POST", "./SearchContoller.php", true);
-            // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            // xhttp.send("query=" + $scope.searchTerm);
-        }
-
-        $scope.search($scope.query);
     });

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="612026542497-0s81vg7ovinmro4nfnhmfjkmsq9tc03m.apps.googleusercontent.com">
     <link rel="stylesheet" href="/static/login-register.css">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/bebas" type="text/css"/>
 </head>
@@ -30,8 +32,19 @@
                     <button type="submit" id="submit" class="button-primary">LOGIN</button>
                 </div>
             </form>
+            <!--
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <form method="post" id="oauth" action="/login">
+                <input type="hidden" name="id" id="oauth_id">
+                <input type="hidden" name="name" id="oauth_name">
+                <input type="hidden" name="img" id="oauth_img">
+                <input type="hidden" name="email" id="oauth_email">
+            </form>
+            -->
+            <!--<a href="#" onclick="signOut();">Sign out</a>-->
         </div>
     </div>
 </body>
 <script src="/static/login.js"></script>
+<script>
 </html>

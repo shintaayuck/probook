@@ -16,7 +16,7 @@ class OrderModel extends BaseModel {
     }
 
     public function searchByUserId() {
-        $stmt = $this->conn->prepare("select * from `order` where user_id = :user_id");
+        $stmt = $this->conn->prepare("select * from `orders` where user_id = :user_id");
         $stmt->bindParam(":user_id", $this->user_id);
 
         $stmt->execute();
