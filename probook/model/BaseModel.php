@@ -42,8 +42,10 @@ class BaseModel
         $stmt->bindParam(":id", $this->id);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        foreach ($result as $column => $value) {
-            $this->$column = $value;
+        if (is_array($result)){
+            foreach ($result as $column => $value) {
+                $this->$column = $value;
+            }
         }
     }
 

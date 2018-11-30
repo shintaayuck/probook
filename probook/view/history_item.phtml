@@ -7,15 +7,20 @@
  */
 ?>
 
-<?php $book = $order->book() ?>
+<?php 
+  $book = $order->book(); 
+  $client = new SoapClient('http://localhost:5000/api/books?wsdl');
+  $param = array("arg0"=>$book->getId());
+  $result = $client->getBook($param)->return;
+?>
 
 <div class="result-item">
   <div class="result-item-top container">
-    <img class="result-item-image " src="<?php echo $book->getImgSrc(); ?>">
+    <img class="result-item-image " src="<?php echo $result->imgsrc; ?>">
     <div class="result-item-desc">
       <div class="result-item-title">
           <div class="title">
-              <?php echo $book->getName(); ?>
+              <?php echo $result->title; ?>
           </div>
           <div class="detail">
               <?php echo date("d F Y", strtotime($order->getCreatedAt())); ?><br>
