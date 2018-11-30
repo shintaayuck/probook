@@ -83,6 +83,8 @@ Pada **basis data bank** terdapat tabel customers dan tabel transaksi. Tabel _cu
 
 2.  Konsep shared session pada REST
 
+Sebuah token diberikan saat pengguna login. Namun, token yang telah diterima oleh pengguna tersebut dapat digunakan oleh pengguna lain. Jadi, pengguna yang seharusnya tidak memiliki token dapat memiliki session di tempat yang berbeda dengan token tersebut.
+
 3.  Mekanisme pembangkitan token dan expiry time
 
 Token dibangkitkan pada saat pengguna melakukan login dengan menggunakan browser atau ip yang belum ada di tabel session. Expiry time di set pada saat token dibangkitkan. Pada aplikasi ini terdapat fungsi inSession yang akan melakukan validasi jika waktu sudah melebih expiry time pada tabel session.
@@ -100,22 +102,22 @@ Untuk kekurangan web service terletak pada keamanan, karena koneksi bisa dipoton
 
 REST :
 1. Setup arsitektur webservice : 13516029
-2. Validasi nomor kartu : 13516029
-3. Transfer (server & client) : 13516017
-4. Menerima token : 13516152
-5. Verifikasi token (bonus) : 13516152
+2. Service validasi : 13516029
+3. Service transfer : 13516017
+4. Memberikan token : 13516152
+5. Verifikasi token bank (bonus) : 13516152
 
 SOAP :
-1. Connection Utilities : 13516029
-2. Search book : 13516029
-3. Detail book : 13516029
+1. Utilities : 13516017, 13516029
+2. Pencarian buku : 13516029
+3. Pengambilan detail : 13516029
 4. Google Books API : 13516029
-5. BuyBookService : 13516017
-6. RecommenderService : 13516152
+5. Pembelian buku : 13516017
+6. Rekomendasi buku : 13516152
 
 Perubahan Web app :
 1. Halaman search (AngularJS) : 13516029
-2. Halaman details book : 13516029
+2. Halaman details book : 13516017, 13516029
 3. Mekanisme access token : 13516152
 4. Halaman details book - Recommendation : 13516152
 5. Halaman edit profile : 13516029, 13516152
@@ -123,7 +125,7 @@ Perubahan Web app :
 7. Halaman order : 13516017
 8. Halaman history : 13516017
 9. Halaman review : 13516017
-10. Halaman Login :13516029
+10. Halaman login : 13516029, 13516152
 
 Bonus :
 1. Pembangkitan token HTOP/TOTP : 13516152
