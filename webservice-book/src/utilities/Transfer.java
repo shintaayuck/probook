@@ -8,6 +8,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.slf4j.LoggerFactory;
 
 
 public class Transfer {

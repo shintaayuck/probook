@@ -51,6 +51,8 @@ public class BuyBookServiceImpl implements BuyBookService {
     @Override
     public BuyStatus buyBook(String bookID, Integer bookAmount, String senderCardNumber) {
         String receiverCardNumber = "0000000000000000";
+        System.out.println(bookID);
+        System.out.println(bookAmount);
         Integer price = getPrice(bookID);
         Integer amount = bookAmount * price;
         Transfer transfer = new Transfer(senderCardNumber, receiverCardNumber, amount);
