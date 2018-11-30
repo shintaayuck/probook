@@ -12,33 +12,54 @@ window.onload = function() {
       document.getElementById("notif-content").style.display = "none";
       e.style.display = "block";
     } else {
-      document.getElementById("notif-error").style.display = "none";
-      document.getElementById("notif-content").style.display = "flex";
+      let url_arr = window.location.href.split("/");
+      let book_id = String(url_arr[url_arr.length - 1]);
+      console.log(order_count);
+      console.log(book_id);
       let data = new FormData();
       data.append("order_count", order_count);
-
-      let url_arr = window.location.href.split("/");
-      data.append("book_id", parseInt(url_arr[url_arr.length - 1]));
+      data.append("book_id", book_id);
 
       let resp = await fetch("/order", {
-        method: "POST",
-        body: data
+        method: 'POST',
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
-
-      let body = await resp.json();
-
+      //let dataresp = JSON.parse(resp);
+      let dataresp = await resp.json();
+      console.log(dataresp);
+      let code = dataresp.statusCode;
+      console.log(code)
+      document.getElementById("overlay").style.display = "flex";
+      if (code == 1) {
       // show notification
-      document.getElementById("order-count").innerHTML = body.order_id;
+        document.getElementById("notif-error").style.display = "none";
+        document.getElementById("notif-content").style.display = "flex";
+        document.getElementById("order-count").innerHTML = dataresp.order_id;
+      } else if (code == 2) {
+        // show error
+        let e = document.getElementById("notif-error");
+        e.innerText = "Sorry, not enough amount.";
+        document.getElementById("notif-content").style.display = "none";
+        e.style.display = "block";
+      } else if (code == 3) {
+        // show error
+        let e = document.getElementById("notif-error");
+        e.innerText = "Sorry, something went wrong in our server.";
+        document.getElementById("notif-content").style.display = "none";
+        e.style.display = "block";
+      } else {
+        console.log("Status code not recognized");
+      }
     }
-
-    document.getElementById("overlay").style.display = "flex";
-  };
-
-  document.getElementById("notif-close").onclick = function() {
+    document.getElementById("notif-close").onclick = function() {
     document.getElementById("overlay").style.display = "none";
-  };
+    };
 
-  document.getElementById("overlay").onclick = function() {
+    document.getElementById("overlay").onclick = function() {
     document.getElementById("overlay").style.display = "none";
+    };
   };
 };
