@@ -13,6 +13,10 @@ if (StaticFile::is_static()) {
     return False;
 }
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+header("Access-Control-Allow-Headers: X-Requested-With");
+
 $router = new Router();
 
 $router->check("NotLoggedInMiddleware", "Register@view");
@@ -26,6 +30,8 @@ $router->check("NotLoggedInMiddleware", "Login@view");
 $router->check("NotLoggedInMiddleware", "Login@login");
 $router->get("/login", "Login@view");
 $router->post("/login", "Login@login");
+
+$router->post("/oauth", "GoogleOAuth@oauth");
 
 $router->check("LoggedInMiddleware", "Logout@logout");
 $router->get("/logout", "Logout@logout");

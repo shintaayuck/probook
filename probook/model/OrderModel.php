@@ -12,7 +12,7 @@ class OrderModel extends BaseModel {
 
     public function __construct()
     {
-        parent::__construct("order");
+        parent::__construct("orders");
     }
 
     public function searchByUserId() {

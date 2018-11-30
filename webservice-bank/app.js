@@ -66,6 +66,7 @@ app.post("/api/transfer", function(req,res) {
   card_no_sender = req.body.card_no_sender;
   card_no_receiver = req.body.card_no_receiver;
   amount = req.body.amount;
+  console.log("processing request");
   if ((card_no_sender) && (card_no_receiver) && (amount)) {
     var sql = 'SELECT balance FROM customer WHERE cardnumber = ?';
     con.query(sql, card_no_sender, function(err, result){

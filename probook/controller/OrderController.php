@@ -16,33 +16,45 @@ class OrderController extends BaseController
     public function new()
     {
         $order_count = (int)$this->request->post("order_count");
-        $book_id = (int)($this->request->post("book_id"));
+        $book_id = (string)$this->request->post("book_id");
+
+        error_log(print_r($order_count, TRUE));
+        error_log(print_r($book_id, TRUE));
 
         $session = new Session();
         $user_id = (int)$session->inSession();
+        $user = new UserModel();
+        $user->setId($user_id);
+        $user->load();
 
         $client = new SoapClient('http://localhost:5000/api/buy-books?wsdl');
-        $param = array("arg0"=>$book_id, "arg1"=>$order_count, "arg2"=>$model->getCardnumber());
-//        var_dump(json_encode($client->searchBook($param)->return));
-        $result = json_decode(json_encode($client->buyBook($param)->return));
 
-        if ($result) {
-            if ()
+        $param = array("arg0"=>$book_id, "arg1"=>$order_count, "arg2"=>$user->getCardnumber());
+        $result = $client->buyBook($param)->return;
+
+        header('Content-type: text/html');
+        header_remove('Content-type');
+        header("Content-type: application/json");
+
+        $statusCode = $result->statusCode;
+        if ($statusCode == 2) {
+            //not enough amount
+            echo json_encode(array("statusCode" => 2, "order_id" => 0));
+        } else if ($statusCode > 2){
+            //failed
+            echo json_encode(array("statusCode" => 3, "order_id" => 0));
         } else {
-            header('Content-Type: application/json');
-            echo json_encode(['status' => 'err', 'order_id' => NULL;
+            //success
+            $order = new OrderModel();
+            $order->setAmount($order_count);
+            $order->setBookId($book_id);
+            $order->setUserId($user_id);
+            $order->setCreatedAt(date("Y/m/d H:i:s"));
+            $order->insert();
+
+            $result = array("statusCode" => 1, "order_id" => (int)$order->getLastInsertId());
+            error_log(print_r(json_encode($result), TRUE));
+            echo json_encode($result);
         }
-
-
-
-        $order = new OrderModel();
-        $order->setAmount($order_count);
-        $order->setBookId($book_id);
-        $order->setUserId($user_id);
-        $order->setCreatedAt(date("Y/m/d H:i:s"));
-        $order->insert();
-
-        header('Content-Type: application/json');
-        echo json_encode(['status' => 'ok', 'order_id' => (int)$order->getLastInsertId()]);
     }
 }
