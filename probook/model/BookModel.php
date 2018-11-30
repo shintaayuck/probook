@@ -62,7 +62,21 @@ class BookModel extends BaseModel {
      */
     public function getRating()
     {
-        return $this->rating;
+        $stmt = $this->conn->prepare("select * from `orders` inner join review on `orders`.review_id = review.id where book_id like :id;");
+        $stmt->bindParam("id", $this->id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $count = 0;
+        $total = 0;
+        foreach($result as $r) {
+            $count += 1;
+            $total += (int)$r["star"];
+        }
+        $rating = 0;
+        if($count > 0) {
+            $rating = $total / $count;
+        }
+        return $rating;
     }
 
     /**
@@ -78,7 +92,15 @@ class BookModel extends BaseModel {
      */
     public function getVote()
     {
-        return $this->vote;
+        $stmt = $this->conn->prepare("select * from `orders` inner join review on `orders`.review_id = review.id where book_id like :id;");
+        $stmt->bindParam("id", $this->id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $count = 0;
+        foreach($result as $r) {
+            $count += 1;
+        }
+        return $count;
     }
 
     /**
