@@ -37,7 +37,7 @@
     <div class='loader' style="display: none" id='loader'> </div>
 
 <!-- Search result-->
-    <section class="" id="search-results" ng-if="result.length != 13">
+    <section class="" id="search-results" ng-if="result.length < 11 && result.length > 0">
 
 <!--        Search result head-->
         <div class="container" id="result-head">
@@ -67,9 +67,6 @@
                     </div>
                     <div class="result-item-rating">
                         {{book.authors.toString()}}
-                    </div>
-                    <div class="result-item-rating">
-                        {{book.rating ? book.rating : 0}} / 5.0 ({{book.vote ? book.vote : 0}} Votes)
                     </div>
                     <div class="result-item-desc">
                         {{book.description}}
