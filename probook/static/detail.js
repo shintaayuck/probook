@@ -8,14 +8,17 @@ window.onload = function() {
             let order_count = parseInt(
                 document.getElementById("order-select").selectedOptions[0].value
             );
-
+            
             let url_arr = window.location.href.split("/");
             let book_id = String(url_arr[url_arr.length - 1]);
+            let token = document.getElementById("token").value;
             console.log(order_count);
             console.log(book_id);
+            console.log(token);
             let data = new FormData();
             data.append("order_count", order_count);
             data.append("book_id", book_id);
+            data.append("token", token);
 
             let resp = await fetch("/order", {
                 method: 'POST',
