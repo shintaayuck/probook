@@ -31,6 +31,7 @@ $router->check("NotLoggedInMiddleware", "Login@login");
 $router->get("/login", "Login@view");
 $router->post("/login", "Login@login");
 
+$router->check("NotLoggedInMiddleware", "GoogleOAuth@oauth");
 $router->post("/oauth", "GoogleOAuth@oauth");
 
 $router->check("LoggedInMiddleware", "Logout@logout");
@@ -63,6 +64,5 @@ $router->check("LoggedInMiddleware", "History@view");
 $router->get("/history", "History@view");
 
 $router->get("/", "Search@landing");
-
 
 $router->execute();

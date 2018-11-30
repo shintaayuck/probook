@@ -2,6 +2,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var otplib = require('otplib');
 
 //Setup database
 const mysql = require('mysql');
@@ -101,6 +102,76 @@ app.post("/api/transfer", function(req,res) {
   } else {
     res.status(400).send({"message": "Bad request", "code" : 5});
   }
+});
+
+app.post("/api/gettoken", function(req,res) {
+  card_no = req.query.card_no;
+  if (card_no) {
+      console.log(card_no);
+      var sql = 'SELECT secretkey FROM customer WHERE cardnumber = ?';
+      con.query(sql, card_no, function(err, res_sec) {
+          // if (err) throw err;
+          if (res_sec[0]) {
+            console.log(res_sec);
+            const token = otplib.authenticator.generate(res_sec);
+            res.header("Access-Control-Allow-Origin", "*");
+            res.status(200).send({"token" : token, "code" : 1}); //OK
+          } else {
+            const secret = otplib.authenticator.generateSecret();
+            console.log(secret);
+            console.log(card_no);
+            var sql = 'UPDATE customer SET secretkey = ? WHERE cardnumber = ?';
+            var val = [secret, card_no];
+            con.query(sql, val, function(err, res_update) {
+              if (err) {
+                res.status(500).send({"message": "Error updating secret key", "code" : 2})
+              } else {
+                console.log(res_update.affectedRows + " record(s) updated");
+                var sql = 'SELECT secretkey FROM customer WHERE cardnumber = ?';
+                con.query(sql, card_no, function(err, result){
+                  console.log(result[0]);
+                  if (result[0]) {
+                    const token = otplib.authenticator.generate(result[0]);
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.status(200).send({"token" : token, "code" : 1}); //OK
+                  } else {
+                    res.status(500).send({"message": "Cannot generate token", "code" : 3})
+                  }
+                })
+              }
+            })
+          }
+      })
+    } else {
+      res.status(400).send({"message": "Bad request", "code" : 4});
+    }
+});
+
+app.post("/api/verifytoken", function(req,res) {
+  token = req.query.token;
+  card_no = req.query.card_no;
+  if (token) {
+      var sql = 'SELECT secretkey FROM customer WHERE cardnumber = ?';
+      con.query(sql, card_no, function(err, result) {
+          // if (err) throw err;
+          if (result) {
+            secret = result;
+            console.log(secret);
+            isValid = otplib.authenticator.check(token, secret);
+            console.log(isValid);
+            if (isValid) {
+              res.header("Access-Control-Allow-Origin", "*");
+              res.status(200).send({"message" : "Token verified", "code" : 1}); //OK
+            } else {
+              res.status(500).send({"message": "Token is not verified", "code" : 5})  
+            }
+          } else {
+            res.status(500).send({"message": "Secret key not found", "code" : 6})
+          }
+      })
+    } else {
+      res.status(400).send({"message": "Bad request", "code" : 4});
+    }
 });
 
 // module.exports = app;

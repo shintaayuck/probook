@@ -14,8 +14,10 @@
   "author": "arkavtalks",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^10.12.10",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "otplib": "^10.1.0-0"
   }
 }
