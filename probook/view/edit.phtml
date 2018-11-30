@@ -15,7 +15,7 @@
     <div id="profile-title"> Edit Profile</div>
     <form name="editform" class="form-container" action="/edit" onsubmit="return validateInput()" method="post" enctype="multipart/form-data">
         <div class="photos-container">
-            <img src=static/<?php echo $avatar;?> alt="Avatar" class="circle">
+            <img src=<?php echo $avatar;?> alt="Avatar" class="circle">
             <div class="photo-update">
                 <label for="avatar">Update Profile Picture</label>
                 <div class="form">

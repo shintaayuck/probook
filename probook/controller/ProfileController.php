@@ -26,7 +26,6 @@ class ProfileController extends BaseController
 
         $vars = [
             "navbar" => "profile",
-            "avatar" => "/static/" . $model->getAvatar(),
             "name" => $model->getName(),
             "username" => $model->getUsername(),
             "email" => $model->getEmail(),
@@ -34,6 +33,12 @@ class ProfileController extends BaseController
             "phone" => $model->getPhone(),
             "cardnumber" => $model->getCardnumber()
         ];
+
+        if (strpos($model->getAvatar(), 'https') !== false) {
+            $vars["avatar"] = $model->getAvatar();
+        } else {
+            $vars["avatar"] = "/static/" . $model->getAvatar();
+        }
 
         View::render("profile", $vars);
     }
