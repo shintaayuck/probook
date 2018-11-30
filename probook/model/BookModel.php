@@ -19,7 +19,7 @@ class BookModel extends BaseModel {
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $result[0];
+        return $result;
     }
 
     public function recalculateRating() {

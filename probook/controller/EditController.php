@@ -26,12 +26,17 @@ class EditController extends BaseController
 
         $vars = [
             "navbar" => "profile",
-            "avatar" => $model->getAvatar(),
             "name" => $model->getName(),
             "address" => $model->getAddress(),
             "phone" => $model->getPhone(),
             "cardnumber" => $model->getCardnumber()
         ];
+
+        if (strpos($model->getAvatar(), 'https') !== false) {
+            $vars["avatar"] = $model->getAvatar();
+        } else {
+            $vars["avatar"] = "/static/" . $model->getAvatar();
+        }
 
         View::render("edit", $vars);
     }

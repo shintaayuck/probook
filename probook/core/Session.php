@@ -69,7 +69,7 @@ class Session
         $sessionId = $this->generateSessionId();
 
         if ($this->session->checkSessionUnavailable($userId)) {
-            session_start();
+//            session_start();
 
             $this->session->setSessionId($sessionId);
             $this->session->setUserId($userId);
@@ -89,7 +89,7 @@ class Session
                 setcookie("username", $username); 
             }
             if (($this->session->getBrowser() != $browsername) or ($this->session->getIp() != $ip)){
-                session_start();
+//                session_start();
                 $this->session->setSessionId($sessionId);
                 $this->session->setUserId($userId);
                 $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+10 minutes")));
@@ -148,7 +148,7 @@ class Session
         $this->session->setSessionId($sessionId);
         $this->session->load();
         $this->session->delete();
-        session_destroy();
+//        session_destroy();
 
         unset($_COOKIE["session"]);
     }

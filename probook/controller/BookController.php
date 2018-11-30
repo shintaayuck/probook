@@ -25,7 +25,7 @@ class BookController extends BaseController
         $result = $client->getBook($param)->return;
 
         $book["name"] = $result->title;
-        if (sizeof($result->authors) > 1) {
+        if (is_array($result->authors)) {
             $book["author"] = $result->authors[0];
             for ($i=1; $i < sizeof($result->authors); $i++) {
                 $book["author"] .= ", " . $result->authors[$i];
@@ -54,7 +54,7 @@ class BookController extends BaseController
         $recommend_model->loadById();
 
         $recommend["name"] = $result_recomm->title;
-        if (sizeof($result_recomm->authors) > 1) {
+        if (is_array($result_recomm->authors)) {
             $recommend["author"] = $result_recomm->authors[0];
             for ($i=1; $i < sizeof($result_recomm->authors); $i++) {
                 $recommend["author"] .= ", " . $result_recomm->authors[$i];
