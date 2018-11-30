@@ -2,22 +2,28 @@ window.onload = function() {
     if (document.body.contains(document.getElementById("book-detail-not-for-sale"))) {
         document.getElementById("orderbutton").disabled = true;
     } else {
-      document.getElementById("orderbutton").onclick = async function() {
-        let url_arr = window.location.href.split("/");
-        let book_id = String(url_arr[url_arr.length - 1]);
-        console.log(order_count);
-        console.log(book_id);
-        let data = new FormData();
-        data.append("order_count", order_count);
-        data.append("book_id", book_id);
 
-        let resp = await fetch("/order", {
-          method: 'POST',
-          body: data,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
+        document.getElementById("orderbutton").onclick = async function() {
+
+            let order_count = parseInt(
+                document.getElementById("order-select").selectedOptions[0].value
+            );
+
+            let url_arr = window.location.href.split("/");
+            let book_id = String(url_arr[url_arr.length - 1]);
+            console.log(order_count);
+            console.log(book_id);
+            let data = new FormData();
+            data.append("order_count", order_count);
+            data.append("book_id", book_id);
+
+            let resp = await fetch("/order", {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
         //let dataresp = JSON.parse(resp);
         let dataresp = await resp.json();
         console.log(dataresp);
