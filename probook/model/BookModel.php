@@ -36,6 +36,7 @@ class BookModel extends BaseModel {
             $rating = $total / $count;
         }
         $this->setRating($rating);
+        $this->setVote($count);
         $this->save();
     }
 
