@@ -99,36 +99,36 @@ Untuk kekurangan web service terletak pada keamanan, karena koneksi bisa dipoton
 ### Pembagian Tugas
 
 REST :
-1\. Setup koneksi : 13516029
-2\. Validasi nomor kartu : 13516029
-3\. Transfer (server & client) : 13516017
-4\. Menerima token : 13516152
-5\. Verifikasi token (bonus) : 13516152
+1. Setup arsitektur webservice : 13516029
+2. Validasi nomor kartu : 13516029
+3. Transfer (server & client) : 13516017
+4. Menerima token : 13516152
+5. Verifikasi token (bonus) : 13516152
 
 SOAP :
-1\. Connection Utilities : 13516029
-2\. Search book : 13516029
-3\. Detail book : 13516029
-4\. Google Books API : 13516029
-5\. BuyBookService : 13516017
-6\. RecommenderService : 13516152
+1. Connection Utilities : 13516029
+2. Search book : 13516029
+3. Detail book : 13516029
+4. Google Books API : 13516029
+5. BuyBookService : 13516017
+6. RecommenderService : 13516152
 
 Perubahan Web app :
-1\. Halaman search (AngularJS) : 13516029
-2\. Halaman details book : 13516029
-3\. Mekanisme access token : 13516152
-4\. Halaman details book - Recommendation : 13516152
-5\. Halaman edit profile : 13516029, 13516152
-6\. Halaman profile : 13516029, 13516152
-7\. Halaman order : 13516017
-8\. Halaman history : 13516017
-9\. Halaman review : 13516017
-10\. Halaman Login :13516029
+1. Halaman search (AngularJS) : 13516029
+2. Halaman details book : 13516029
+3. Mekanisme access token : 13516152
+4. Halaman details book - Recommendation : 13516152
+5. Halaman edit profile : 13516029, 13516152
+6. Halaman profile : 13516029, 13516152
+7. Halaman order : 13516017
+8. Halaman history : 13516017
+9. Halaman review : 13516017
+10. Halaman Login :13516029
 
 Bonus :
-1\. Pembangkitan token HTOP/TOTP : 13516152
-2\. Validasi token : 13516152
-3\. Google login : 13516029
+1. Pembangkitan token HTOP/TOTP : 13516152
+2. Validasi token : 13516152
+3. Google login : 13516029
 
 ## About
 
