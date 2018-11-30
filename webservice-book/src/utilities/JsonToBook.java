@@ -73,6 +73,8 @@ public class JsonToBook {
                 JSONObject listPrice = new JSONObject(saleInfo.get("listPrice").toString());
                 if (listPrice.has("amount")) {
                     price = listPrice.getInt("amount");
+                } else {
+                    price = -1;
                 }
             }
         }
