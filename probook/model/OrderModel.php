@@ -4,6 +4,7 @@ require_once "model/BaseModel.php";
 require_once "model/BookModel.php";
 
 class OrderModel extends BaseModel {
+    protected $id;
     protected $user_id;
     protected $book_id;
     protected $amount;
