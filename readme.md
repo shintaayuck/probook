@@ -2,10 +2,6 @@
 
 Melakukan _upgrade_ Website toko buku online pada Tugas 1 dengan mengaplikasikan **arsitektur web service REST dan SOAP**.
 
-## Format penamaan
-
-arkavTalks-13516017-M. Nurraihan Naufal
-
 ### Tujuan Pembuatan Tugas
 
 Diharapkan dengan tugas ini anda dapat mengerti:
@@ -22,15 +18,15 @@ Diharapkan dengan tugas ini anda dapat mengerti:
 3.  13516152 - Deborah Aprilia Josephine
 
 ### Outline ReadMe
-1. [Anggota Tim](#anggota)
-2. [Deskripsi Tugas](#deskripsi)
-3. [Struktur aplikasi](#struktur)
-4. Penjelasan terkait :
-    - [Basis data pada aplikasi](#basdat)
-    - [Konsep _shared session_ dengan menggunakan REST](#shared_session)
-    - [Mekanisme pembangkitan token dan expiry time pada aplikasi](#token_expire)
-    - [Kelebihan dan kelemahan dari arsitektur aplikasi tugas ini, dibandingkan dengan aplikasi monolitik (login, CRUD DB, dll jadi dalam satu aplikasi)](#perbandingan)
-5.  [Pembagian tugas](#pembagian-tugas)
+1. [Anggota Tim](#anggota-tim)
+2. [Deskripsi Tugas](#deskripsi-tugas)
+3. [Struktur aplikasi](#struktur-aplikasi-dan-penggunaan)
+4. [Penjelasan terkait](#penjelasan) :
+    - Basis data pada aplikasi
+    - Konsep _shared session_ dengan menggunakan REST
+    - Mekanisme pembangkitan token dan expiry time pada aplikasi
+    - Kelebihan dan kelemahan dari arsitektur aplikasi tugas ini, dibandingkan dengan aplikasi monolitik (login, CRUD DB, dll jadi dalam satu aplikasi)
+5.  Pembagian tugas
 
 ### Deskripsi Tugas
 
